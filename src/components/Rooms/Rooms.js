@@ -2,7 +2,12 @@ import React from 'react'
 
 const Rooms = () => {
     return (
-        <div>Thang Brach</div>
+        <div>
+            <div>
+                Thang Brach
+            </div>
+            <h1>123465</h1>
+        </div>
     )
 }
 
