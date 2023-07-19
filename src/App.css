@@ -1,38 +1,535 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@700&display=swap');
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+* a {
+  text-decoration: none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar {
+  height: 85px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.navbar-brand {
+  font-size: 30px !important;
+}
+
+.list-inline-border {
+  position: relative;
+  color: white;
+}
+
+.list-inline-border>li:not(:last-child) {
+  border-right: 1px solid #74757f;
+}
+
+.list-inline-border>* {
+  padding-left: 10px;
+  padding-right: 18px;
+}
+
+.list-inline-border>li {
+  display: inline-block;
+  line-height: 24px;
+}
+
+.btn-web {
+  background-color: #c19b76 !important;
+  color: white !important;
+}
+
+@media (max-width: 767px) {
+  .navbar-brand {
+    font-size: 25px !important;
   }
-  to {
-    transform: rotate(360deg);
+
+  .list-inline-border {
+    display: none;
   }
+}
+
+.navbar-nav>li:hover {
+  background-color: #c19b76;
+}
+
+.offcanvas-body {
+  flex-grow: 1;
+  padding: var(--bs-offcanvas-padding-y) var(--bs-offcanvas-padding-x);
+  overflow-y: auto;
+}
+
+#section-booking {
+  background-image: url(https://livedemo00.template-help.com/wt_prod-19522/images/bg-image-2.jpg);
+  padding: 150px 0;
+  background-size: cover;
+  background-position: center center;
+}
+
+.section-booking-header {
+  margin-bottom: 30px;
+}
+
+.section-booking-header h1 {
+  font-size: 70px;
+  color: white;
+  font-family: 'Old Standard TT', serif;
+  line-height: 80px;
+}
+
+.section-booking-header h3 {
+  font-size: 40px;
+  color: white;
+  font-family: 'Old Standard TT', serif;
+  line-height: 60px;
+  font-weight: unset;
+}
+
+#section-booking .btn {
+  width: 100%;
+  height: 100%;
+}
+
+.img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+@media (min-width: 426px) and (max-width: 767px) {
+  #section-booking {
+    padding: 120px 0;
+  }
+
+  .section-booking-header h1 {
+    font-size: 50px;
+    color: white;
+    font-family: 'Old Standard TT', serif;
+    line-height: 60px;
+  }
+
+  .section-booking-header h3 {
+    font-size: 30px;
+    color: white;
+    font-family: 'Old Standard TT', serif;
+    line-height: 50px;
+    font-weight: unset;
+  }
+}
+
+@media (max-width: 425px) {
+  #section-booking {
+    padding: 50px 0;
+  }
+
+  .section-booking-header h1 {
+    font-size: 30px;
+    color: white;
+    font-family: 'Old Standard TT', serif;
+    line-height: 40px;
+  }
+
+  .section-booking-header h3 {
+    font-size: 20px;
+    color: white;
+    font-family: 'Old Standard TT', serif;
+    line-height: 50px;
+    font-weight: unset;
+  }
+}
+
+#section-vision {
+  padding: 70px 0;
+}
+
+#section-vision img {
+  width: 100%;
+  height: 100%;
+}
+
+#section-our-rooms {
+  padding: 70px 0;
+}
+
+#section-our-rooms .card {
+  border: none !important;
+}
+
+#section-our-rooms .item-header {
+  font-family: 'Old Standard TT', serif;
+}
+
+#section-our-rooms .hotel-name {
+  font-size: 25px;
+}
+
+#section-our-rooms a {
+  padding: 10px 30PX;
+  margin-top: 50px;
+}
+
+#service {
+  padding: 70px 0;
+}
+
+#service .service-icon {
+  color: #c19b76;
+  font-size: 35px;
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+
+#service .service-title {
+  font-family: 'Old Standard TT', serif;
+  padding-bottom: 10px;
+}
+
+#service .service-title:hover {
+  color: #c19b76;
+}
+
+#section-more {
+  background-image: url(https://livedemo00.template-help.com/wt_prod-19522/images/call-to-action-1-1920x456.jpg);
+  padding: 80px 0;
+  background-size: cover;
+  background-position: center center;
+}
+
+#section-more p {
+  width: 70%;
+  font-size: 15px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+#section-more a {
+  padding: 10px 30PX;
+}
+
+#section-news {
+  padding: 70px 0;
+}
+
+#section-news .hotel-name {
+  font-family: 'Old Standard TT', serif;
+  font-size: 30px;
+}
+
+#section-news .hotel-name:hover {
+  color: #888;
+}
+
+.my-title {
+  font-family: 'Old Standard TT', serif;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#find-rooms {
+  margin-top: 65px;
+  margin-bottom: 65px;
+}
+
+#filter {
+  background-color: #e5d8cb;
+  height: 300px;
+  font-size: 1.2rem;
+  border: 1px solid #888;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+@media (min-width: 426px) and (max-width: 767px) {
+  #filter {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 425px) {
+  #filter {
+    align-items: center;
+    width: 95%;
+    margin: 10px;
+  }
+
+  #list-room {
+    width: 100%;
+  }
+}
+
+.filter-title {
+  font-family: 'Old Standard TT', serif;
+  padding-left: 16px;
+  margin: 10px 0;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hotel-name {
+  font-size: 20px;
+  padding: 3px 0;
+  color: #c19b76;
+  font-weight: bold;
+  margin: 0;
+  line-height: 28px;
+}
+
+.rating {
+  display: block;
+  color: white;
+  background: darkblue;
+  font-size: 16px;
+  font-weight: bolder;
+  padding: 10px;
+  border-radius: 10px 10px 10px 0;
+}
+
+.room-options {
+  color: #66bb66;
+}
+
+.room-price {
+  font-size: 25px;
+  font-weight: 600;
+  color: #fd5050;
+}
+
+.btn-add-to-card {
+  --bs-btn-color: var(--bs-white) !important;
+  --bs-btn-bg: #c19b76 !important;
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: rgb(100, 100, 100);
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  vertical-align: middle;
+  border-style: none;
+}
+
+#footer {
+  padding: 50px;
+  color: white !important;
+}
+
+#footer .footer-heading {
+  font-size: 30px;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.ftco-footer-social li {
+  list-style: none;
+  margin: 0 10px 0 0;
+  display: inline-block;
+}
+
+.ftco-footer-social li a {
+  height: 40px;
+  width: 40px;
+  display: block;
+  background: #c19b76;
+  border-radius: 50%;
+  position: relative;
+  color: white;
+}
+
+.ftco-footer-social li a i {
+  position: absolute;
+  font-size: 20px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.ftco-footer-social li a:hover {
+  color: #c19b76;
+}
+
+.form-control {
+  height: 52px;
+  background: #fff;
+  color: #000;
+  font-size: 18px;
+  border-radius: 0px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#footer .menu {
+  margin-bottom: 30px;
+}
+
+#footer .menu a {
+  color: white;
+  margin: 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+#footer .menu a:hover {
+  color: #c19b76;
+}
+
+#footer .ftco-footer-social li a {
+  background: transparent;
+  border: 1px solid #c19b76;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #c19b76;
+  color: white !important;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+#tgb-loader {
+  position: fixed;
+  z-index: 99999999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #c19b76
+}
+
+.no-js #tgb-loader,
+.oldie #tgb-loader {
+  display: none
+}
+
+#loader {
+  position: absolute;
+  top: calc(50% - 1.25em);
+  left: calc(50% - 1.25em)
+}
+
+.loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  top: 50%;
+  animation: loader 4s infinite ease
+}
+
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  25% {
+    transform: rotate(180deg)
+  }
+
+  50% {
+    transform: rotate(180deg)
+  }
+
+  75% {
+    transform: rotate(360deg)
+  }
+
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+@keyframes loader-inner {
+  0% {
+    height: 0
+  }
+
+  25% {
+    height: 0
+  }
+
+  50% {
+    height: 100%
+  }
+
+  75% {
+    height: 100%
+  }
+
+  100% {
+    height: 0
+  }
+}
+
+.listPage {
+  padding: 10px;
+  text-align: center;
+  list-style: none;
+}
+
+.listPage li {
+  background-color: #ffffffBD;
+  padding: 10px 15px;
+  display: inline-block;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.listPage .active {
+  background-color: #c19b76;
+  color: #fff;
+  border-radius: 15%;
+}
+
+@keyframes topDown {
+  0% {
+    left: 0px;
+    bottom: 100px;
+  }
+
+  100% {
+    left: 0px;
+    top: 0px;
+  }
+}
+
+#section-booking h1 {
+  position: relative;
+  animation-name: topDown;
+  animation-duration: 7s;
 }
