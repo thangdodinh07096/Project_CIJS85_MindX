@@ -1,0 +1,48 @@
+
+.login {
+    width: 55%;
+    height: 45%;
+}
+
+.login-section {
+    width: 50%;
+    height: 100%;
+    border: none;
+}
+
+.logo-part {
+    width: 50%;
+    height: 100%;
+}
+
+.password-part {
+    position: relative;
+    margin-top: 10px;
+    background: rgb(255, 255, 255);
+}
+
+.icon {
+    position: absolute;
+    right: 18%;
+    bottom: 5%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: #fff;
+}
+
+.email {
+    width: 65%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    border-bottom: 1px solid #000;
+}
+
+.password {
+    width: 65%;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    border-bottom: 1px solid #000;
+}
