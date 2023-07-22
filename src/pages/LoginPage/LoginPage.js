@@ -7,7 +7,7 @@ const LoginPage = () => {
   return (
     <section
       className="d-flex container-fluid justify-content-center align-items-center "
-      style={{ height: "100vh", width:'100%', background: "#EEE2DE" }}
+      style={{ height: "100vh", width: "100%", background: "#EEE2DE" }}
     >
       <div
         className="login d-flex flex-wrap justify-content-between align-items-center container-fluid rounded shadow "
@@ -17,7 +17,7 @@ const LoginPage = () => {
           className="login-section d-flex flex-column col-lg-6 col-12 justify-content-center align-items-center rounded-start-2 gap-3"
           style={{ background: "#FFF" }}
         >
-          <h5>Welcome to Lux Hotel</h5>
+          <h5 className="m-0">Welcome to Lux Hotel</h5>
           <div style={{ width: "100%" }}>
             <input
               className="email"
@@ -37,9 +37,9 @@ const LoginPage = () => {
           </div>
           <div
             className="d-flex flex-column justify-content-center align-items-center gap-2"
-            style={{ width: "100%", marginTop:'2%' }}
+            style={{ width: "100%", marginTop: "2%" }}
           >
-            <button className="btn btn-dark" style={{ width: "65%" }}>
+            <button className="btn btn-dark" style={{ width: "70%" }}>
               Login
             </button>
             <p>Create An Account</p>
@@ -52,7 +52,7 @@ const LoginPage = () => {
           }}
         >
           <h2>Home Stays</h2>
-          <FaHome size={80}/>
+          <FaHome size={80} />
         </div>
       </div>
     </section>
