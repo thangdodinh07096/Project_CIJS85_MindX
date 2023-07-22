@@ -1,19 +1,20 @@
 import React from "react";
 import "./LoginPage.css";
 import { BiShowAlt } from "react-icons/bi";
+import { FaHome } from "react-icons/fa";
 
 const LoginPage = () => {
   return (
     <section
       className="d-flex container-fluid justify-content-center align-items-center "
-      style={{ height: "100vh", background: "#EEE2DE" }}
+      style={{ height: "100vh", width:'100%', background: "#EEE2DE" }}
     >
       <div
-        className="login d-flex justify-content-between align-items-center container-fluid rounded shadow "
+        className="login d-flex flex-wrap justify-content-between align-items-center container-fluid rounded shadow "
         style={{ padding: "0" }}
       >
         <div
-          className="login-section d-flex flex-column justify-content-center align-items-center rounded-start-2 gap-3"
+          className="login-section d-flex flex-column col-lg-6 col-12 justify-content-center align-items-center rounded-start-2 gap-3"
           style={{ background: "#FFF" }}
         >
           <h5>Welcome to Lux Hotel</h5>
@@ -45,17 +46,13 @@ const LoginPage = () => {
           </div>
         </div>
         <div
-          className="logo-part d-flex flex-column justify-content-center align-items-center rounded-end-2"
+          className="logo-part d-none d-lg-flex flex-column col-lg-6 justify-content-center align-items-center rounded-end-2 text-light"
           style={{
             background: "#6c757d",
           }}
         >
-          <h2 className="text-light">Lux Hotel</h2>
-          <img
-            style={{ maxWidth: "180px" }}
-            src="https://www.hotelluxgabicce.it/img/logo-new.png"
-            alt="image"
-          />
+          <h2>Home Stays</h2>
+          <FaHome size={80}/>
         </div>
       </div>
     </section>

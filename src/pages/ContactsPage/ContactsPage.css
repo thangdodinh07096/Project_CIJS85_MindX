@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&family=Noto+Serif+Display:ital,wght@1,300&display=swap');
+
+.contacts-custom {
+    background: url('https://livedemo00.template-help.com/wt_prod-19522/images/breadcrumbs-image-4.jpg');
+    font-family: 'Inria Serif', serif;
+}
+
+.contacts-custom h6 {
+    position: relative;
+}
+
+.contacts-custom p {
+    position: absolute;
+    border-bottom: 2px #f0ebeb solid;
+    width: 5%;
+
+}
+
+
