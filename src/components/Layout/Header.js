@@ -5,7 +5,7 @@ const Header = () => {
         <header>
             <nav className="navbar navbar-dark bg-dark fixed-top">
                 <div className="container">
-                    <a className="navbar-brand" href="./index.html">
+                    <a className="navbar-brand" href="./">
                         <i className="fas fa-home"> Home <span style={{ fontStyle: 'italic', fontWeight: 100 }}>Stays</span>
                         </i>
                     </a>
