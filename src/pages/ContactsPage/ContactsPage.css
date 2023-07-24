@@ -4,7 +4,7 @@
     background: url('https://livedemo00.template-help.com/wt_prod-19522/images/breadcrumbs-image-4.jpg');
     font-family: 'Inria Serif', serif;
     width: 100%;
-    min-height: inherit;
+    height: auto;
     padding-top: 8%;
     padding-bottom: 3%;
 }
@@ -73,6 +73,6 @@
 
 .button:hover {
     background: #413F42;
-    box-shadow:  0.2rem 1rem #413F42;;
+    box-shadow: 10px 10px 5px #aaaaaa;
     transition: all 0.3s ease;
 }

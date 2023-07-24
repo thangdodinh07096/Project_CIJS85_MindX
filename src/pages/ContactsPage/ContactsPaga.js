@@ -12,8 +12,11 @@ const ContactsPaga = () => {
       className="container-fluid"
       style={{ padding: "0", width: "100%", height: "100vh" }}
     >
-      <div className="contacts-custom container-fluid d-flex flex-column justify-content-center align-items-start text-light ps-4">
-        <div>
+      <div
+        className="contacts-custom d-flex flex-column justify-content-center align-items-start text-light ps-4"
+        style={{ marginTop: "85px" }}
+      >
+        <div className="container">
           <div
             className="d-flex flex-column justify-content-start"
             style={{ width: "100%" }}
@@ -34,7 +37,7 @@ const ContactsPaga = () => {
         </div>
       </div>
       <section
-        className="section d-flex flex-column flex-md-row justify-content-center align-items-center ms-md-5 me-md-5 ps-lg-5 pe-lg-5 m-4"
+        className="section container d-flex flex-column flex-md-row justify-content-center align-items-center mt-4 mb-4"
         style={{ color: "#c19b76" }}
       >
         <div className="section-item col-md-4 col-12 d-flex row justify-content-center align-items-center gap-2 ps-4 pe-4">
@@ -57,35 +60,72 @@ const ContactsPaga = () => {
           </p>
         </div>
       </section>
-      <section className="range row p-5" style={{ background: "rgb(236 240 243)" }}>
-        <div className="row col-md-10 col-lg-8 col-12 mb-5">
-          <h3 className="pt-3 pb-4">Contacts Us</h3>
-          <div className="col-sm-6 col-12 mb-3" style={{color: 'rgba(21, 21, 21, 0.7)'}}>
-            <label className="form-label">First Name</label>
-            <input type="text" className="form-control" />
+      <div
+        style={{
+          background: "rgb(236 240 243)",
+          height: "auto",
+          height: "auto",
+        }}
+      >
+        <section className="range container pt-5 pb-5">
+          <div className="row col-md-8 col-12">
+            <h3 className="pt-3 pb-4">Contacts Us</h3>
+            <div
+              className="col-sm-6 col-12 mb-3"
+              style={{ color: "rgba(21, 21, 21, 0.7)" }}
+            >
+              <label className="form-label">First Name</label>
+              <input type="text" className="form-control rounded" />
+            </div>
+            <div
+              className="col-sm-6 col-12 mb-3"
+              style={{ color: "rgba(21, 21, 21, 0.7)" }}
+            >
+              <label className="form-label">Last Name</label>
+              <input type="text" className="form-control rounded" />
+            </div>
+            <div
+              className="col-sm-6 col-12 mb-3"
+              style={{ color: "rgba(21, 21, 21, 0.7)" }}
+            >
+              <label className="form-label">E-mail</label>
+              <input type="email" className="form-control rounded" />
+            </div>
+            <div
+              className="col-sm-6 col-12 mb-3"
+              style={{ color: "rgba(21, 21, 21, 0.7)" }}
+            >
+              <label className="form-label">Phone Number</label>
+              <input type="text" className="form-control rounded" />
+            </div>
+            <div className="mb-3">
+              <label
+                className="form-label"
+                style={{ color: "rgba(21, 21, 21, 0.7)" }}
+              >
+                Your Message
+              </label>
+              <textarea
+                className="form-control rounded"
+                rows={3}
+                defaultValue={""}
+                style={{
+                  height: "150px",
+                  minHeight: "48px",
+                  maxHeight: "255px",
+                  resize: "vertical",
+                }}
+              />
+            </div>
+            <div style={{ height: "48px" }}>
+              <button className="button text-light rounded">
+                Send Message
+              </button>
+            </div>
           </div>
-          <div className="col-sm-6 col-12 mb-3" style={{color: 'rgba(21, 21, 21, 0.7)'}}>
-            <label className="form-label">Last Name</label>
-            <input type="text" className="form-control" />
-          </div>
-          <div className="col-sm-6 col-12 mb-3" style={{color: 'rgba(21, 21, 21, 0.7)'}}>
-            <label className="form-label">E-mail</label>
-            <input type="email" className="form-control" />
-          </div>
-          <div className="col-sm-6 col-12 mb-3" style={{color: 'rgba(21, 21, 21, 0.7)'}}>
-            <label className="form-label">Phone Number</label>
-            <input type="text" className="form-control" />
-          </div>
-          <div className="mb-3">
-            <label className="form-label" style={{color: 'rgba(21, 21, 21, 0.7)'}}>Your Message</label>
-            <textarea className="form-control" rows={3} defaultValue={""} />
-          </div>
-          <div style={{ height: "9%" }}>
-            <button className="button text-light rounded">Send Message</button>
-          </div>
-        </div>
-        <div className="col-2 d-md-none"></div>
-      </section>
+          <div className="col-4 d-md-none"></div>
+        </section>
+      </div>
     </div>
   );
 };
