@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 function App() {
   return (
     <div className="App">
+      <Rooms />
       <LoginPage />
     </div>
   );
