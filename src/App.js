@@ -10,6 +10,7 @@ import ContactsPage from './pages/ContactsPage/ContactsPage';
 function App() {
   return (
     <div className="App">
+
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

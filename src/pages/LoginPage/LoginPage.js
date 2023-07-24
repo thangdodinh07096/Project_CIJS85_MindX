@@ -4,7 +4,6 @@ import { BiShowAlt } from "react-icons/bi";
 import { FaHome } from "react-icons/fa";
 
 const LoginPage = () => {
-  console.log("first");
   return (
     <section
       className="d-flex container-fluid justify-content-center align-items-center "
@@ -15,11 +14,14 @@ const LoginPage = () => {
         style={{ padding: "0" }}
       >
         <div
-          className="login-section d-flex flex-column col-lg-6 col-12 justify-content-center align-items-center rounded-start-2 gap-3"
+          className="login-section d-flex flex-column col-lg-6 col-12 justify-content-center align-items-center rounded-start-2 gap-4 gap-sm-3"
           style={{ background: "#FFF" }}
         >
+          <div className="d-sm-none d-block">
+          <FaHome size={80} />
+          </div>
           <h5 className="m-0">Welcome to Lux Hotel</h5>
-          <div style={{ width: "100%" }}>
+          <div className="d-flex flex-column align-items-center gap-2 gap-sm-0 mt-4 mt-sm-0" style={{ width: "100%" }}>
             <input
               className="email"
               type="email"
