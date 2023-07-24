@@ -4,6 +4,7 @@ import { BiShowAlt } from "react-icons/bi";
 import { FaHome } from "react-icons/fa";
 
 const LoginPage = () => {
+  console.log("first");
   return (
     <section
       className="d-flex container-fluid justify-content-center align-items-center "
