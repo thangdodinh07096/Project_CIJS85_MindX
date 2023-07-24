@@ -1,0 +1,59 @@
+
+.login {
+    width: 60%;
+    height: 50%;
+}
+
+@media (max-width: 991px) {
+    .login-section {
+    border-radius: 0.375rem; 
+    }
+}
+
+@media (max-width: 576px) {
+    .login {
+        width: 100vh;
+        height: 100vh;
+    }
+}
+
+.login-section {
+    height: 100%;
+    border: none;
+}
+
+.logo-part {
+    height: 100%;
+}
+
+.password-part {
+    position: relative;
+    margin-top: 10px;
+    background: rgb(255, 255, 255);
+}
+
+.icon {
+    position: absolute;
+    right: 16%;
+    bottom: 15%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: #fff;
+}
+
+.email {
+    width: 70%;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    border-bottom: 1px solid #000;
+}
+
+.password {
+    width: 70%;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    border-bottom: 1px solid #000;
+}
