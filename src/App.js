@@ -1,28 +1,27 @@
 import './App.css';
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Rooms from './components/Rooms/Rooms';
 import Home from './pages/HomePage/Home';
-import Header from './components/Layout/Header';
-import Footer from './components/Layout/Footer';
 import LoginPage from './pages/LoginPage/LoginPage';
 import ContactsPage from './pages/ContactsPage/ContactsPage';
+import Layout from './components/Layout/Layout';
 
 function App() {
   return (
     <div className="App">
-
-      <Header />
+      {/* <BrowserRouter> */}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/rooms" element={<Rooms />} />
+          <Route path="/cart" element={<Home />} />
+          <Route path="/contact" element={<ContactsPage />} />
+        </Route>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/rooms" element={<Rooms />} />
-        <Route path="/cart" element={<Home />} />
-        <Route path="/contact" element={<ContactsPage />} />
+        <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
-      <Footer />
+      {/* </BrowserRouter> */}
     </div>
-
-    
   );
 }
 

@@ -10,7 +10,7 @@ const ContactsPage = () => {
   return (
     <div
       className="container-fluid"
-      style={{ padding: "0", width: "100%", height: "100vh" }}
+      style={{ padding: "0", width: "100%" }}
     >
       <div
         className="contacts-custom d-flex flex-column justify-content-center align-items-start text-light ps-4"
@@ -126,35 +126,6 @@ const ContactsPage = () => {
           <div className="col-4 d-md-none"></div>
         </section>
       </div>
-      <section className="range row p-5" style={{ background: "rgb(236 240 243)" }}>
-        <div className="row col-md-10 col-lg-8 col-12 mb-5">
-          <h3 className="pt-3 pb-4">Contacts Us</h3>
-          <div className="col-sm-6 col-12 mb-3" style={{ color: 'rgba(21, 21, 21, 0.7)' }}>
-            <label className="form-label">First Name</label>
-            <input type="text" className="form-control" />
-          </div>
-          <div className="col-sm-6 col-12 mb-3" style={{ color: 'rgba(21, 21, 21, 0.7)' }}>
-            <label className="form-label">Last Name</label>
-            <input type="text" className="form-control" />
-          </div>
-          <div className="col-sm-6 col-12 mb-3" style={{ color: 'rgba(21, 21, 21, 0.7)' }}>
-            <label className="form-label">E-mail</label>
-            <input type="email" className="form-control" />
-          </div>
-          <div className="col-sm-6 col-12 mb-3" style={{ color: 'rgba(21, 21, 21, 0.7)' }}>
-            <label className="form-label">Phone Number</label>
-            <input type="text" className="form-control" />
-          </div>
-          <div className="mb-3">
-            <label className="form-label" style={{ color: 'rgba(21, 21, 21, 0.7)' }}>Your Message</label>
-            <textarea className="form-control" rows={3} defaultValue={""} />
-          </div>
-          <div style={{ height: "9%" }}>
-            <button className="button text-light rounded">Send Message</button>
-          </div>
-        </div>
-        <div className="col-2 d-md-none"></div>
-      </section>
     </div>
   );
 };
