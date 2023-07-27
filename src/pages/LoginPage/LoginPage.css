@@ -1,6 +1,6 @@
 
 .login {
-    width: 60%;
+    width: 55%;
     height: 50%;
 }
 
@@ -36,7 +36,7 @@
 
 .icon {
     position: absolute;
-    right: 0;
+    right: 4%;
     bottom: 15%;
     padding: 0;
     margin: 0;

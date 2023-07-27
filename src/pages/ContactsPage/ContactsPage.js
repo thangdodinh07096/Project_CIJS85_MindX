@@ -75,7 +75,7 @@ const ContactsPage = () => {
               style={{ color: "rgba(21, 21, 21, 0.7)" }}
             >
               <label className="form-label">First Name</label>
-              <input type="text" className="form-control rounded" />
+              <input type="text" className="form-control " />
             </div>
             <div
               className="col-sm-6 col-12 mb-3"
