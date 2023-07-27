@@ -1,12 +1,13 @@
 import "./App.css";
 import { useState, useEffect, useRef } from "react";
-import { Routes, Route, useNavigate, BrowserRouter } from "react-router-dom";
+import { Routes, Route, useNavigate,BrowserRouter } from "react-router-dom";
 import Home from "./pages/HomePage/Home";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import Layout from "./components/Layout/Layout";
+import Layout from './components/Layout/Layout';
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
-import RoomsPage from "./pages/Rooms/RoomsPage";
+import RoomsPage from './pages/Rooms/RoomsPage';
 import MyApp from "./contexts/MyApp";
+
 
 function App() {
   const [usersData, setUsersData] = useState([]);
@@ -61,18 +62,18 @@ function App() {
         onSubmitLoginHandle,
       }}
     >
-      <div className="App">
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/rooms" element={<RoomsPage />} />
-            <Route path="/cart" element={<Home />} />
-            <Route path="/contact" element={<ContactsPage />} />
-          </Route>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="*" element={<h1>Page not found</h1>} />
-        </Routes>
-      </div>
+    <div className="App">
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/rooms" element={<RoomsPage />} />
+          <Route path="/cart" element={<Home />} />
+          <Route path="/contact" element={<ContactsPage />} />
+        </Route>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<h1>Page not found</h1>} />
+      </Routes>
+    </div>
     </MyApp.Provider>
   );
 }
