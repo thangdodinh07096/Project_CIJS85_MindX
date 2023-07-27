@@ -1,12 +1,11 @@
 import "./App.css";
 import { useState, useEffect, useRef } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import Rooms from "./components/Rooms/Rooms";
+import { Routes, Route, useNavigate, BrowserRouter } from "react-router-dom";
 import Home from "./pages/HomePage/Home";
-import Header from "./components/Layout/Header";
-import Footer from "./components/Layout/Footer";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import Layout from "./components/Layout/Layout";
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
+import RoomsPage from "./pages/Rooms/RoomsPage";
 import MyApp from "./contexts/MyApp";
 
 function App() {
@@ -63,15 +62,16 @@ function App() {
       }}
     >
       <div className="App">
-        <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/rooms" element={<RoomsPage />} />
+            <Route path="/cart" element={<Home />} />
+            <Route path="/contact" element={<ContactsPage />} />
+          </Route>
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/rooms" element={<Rooms />} />
-          <Route path="/cart" element={<Home />} />
-          <Route path="/contact" element={<ContactsPage />} />
+          <Route path="*" element={<h1>Page not found</h1>} />
         </Routes>
-        <Footer />
       </div>
     </MyApp.Provider>
   );
