@@ -10,7 +10,7 @@ const ContactsPage = () => {
   return (
     <div
       className="container-fluid"
-      style={{ padding: "0", width: "100%", height: "100%" }}
+      style={{ padding: "0", width: "100%", height: "100vh" }}
     >
       <div
         className="contacts-custom d-flex flex-column justify-content-center align-items-start text-light ps-4"

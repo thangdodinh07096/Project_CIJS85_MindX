@@ -1,13 +1,11 @@
-import "./App.css";
-import { useState, useEffect, useRef } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
-import Rooms from "./components/Rooms/Rooms";
-import Home from "./pages/HomePage/Home";
-import Header from "./components/Layout/Header";
-import Footer from "./components/Layout/Footer";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import ContactsPage from "./pages/ContactsPage/ContactsPage";
-import MyApp from "./contexts/MyApp";
+import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Rooms from './components/Rooms/Rooms';
+import Home from './pages/HomePage/Home';
+import Header from './components/Layout/Header';
+import Footer from './components/Layout/Footer';
+import LoginPage from './pages/LoginPage/LoginPage';
+import ContactsPage from './pages/ContactsPage/ContactsPage';
 
 function App() {
   const [usersData, setUsersData] = useState([]);
@@ -51,29 +49,20 @@ function App() {
   };
 
   return (
-    <MyApp.Provider
-      value={{
-        usersData: usersData,
-        dataUser: dataUser,
-        userEmail: userEmail,
-        userPassword: userPassword,
-        onUserEmailValueChange,
-        onUserPasswordValueChange,
-        onSubmitLoginHandle,
-      }}
-    >
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/rooms" element={<Rooms />} />
-          <Route path="/cart" element={<Home />} />
-          <Route path="/contact" element={<ContactsPage />} />
-        </Routes>
-        <Footer />
-      </div>
-    </MyApp.Provider>
+    <div className="App">
+
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/rooms" element={<Rooms />} />
+        <Route path="/cart" element={<Home />} />
+        <Route path="/contact" element={<ContactsPage />} />
+      </Routes>
+      <Footer />
+    </div>
+
+    
   );
 }
 
