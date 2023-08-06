@@ -151,7 +151,6 @@ function App() {
           };
           addUser();
           navigate("/login");
-
           break;
       }
     },
