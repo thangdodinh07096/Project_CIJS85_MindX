@@ -1,12 +1,13 @@
 import "./App.css";
 import { useState, useEffect, useRef } from "react";
-import { Routes, Route, useNavigate,BrowserRouter } from "react-router-dom";
+import { Routes, Route, useNavigate, BrowserRouter } from "react-router-dom";
 import Home from "./pages/HomePage/Home";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Layout from './components/Layout/Layout';
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
-import RoomsPage from './pages/Rooms/RoomsPage';
 import MyApp from "./contexts/MyApp";
+import HotelListPage from "./pages/HotelListPage/HotelListPage";
+import HotelDetailPage from "./pages/HotelDetail/HotelDetailPage";
 
 
 function App() {
@@ -39,7 +40,6 @@ function App() {
     const findUser = usersData.find((user) => {
       return userEmail === user.email_address && userPassword === user.password;
     });
-    console.log(findUser);
     if (findUser) {
       localStorage.setItem("dataUser", JSON.stringify(findUser));
       const storedDataUser = JSON.parse(localStorage.getItem("dataUser"));
@@ -62,18 +62,19 @@ function App() {
         onSubmitLoginHandle,
       }}
     >
-    <div className="App">
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/rooms" element={<RoomsPage />} />
-          <Route path="/cart" element={<Home />} />
-          <Route path="/contact" element={<ContactsPage />} />
-        </Route>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="*" element={<h1>Page not found</h1>} />
-      </Routes>
-    </div>
+      <div className="App">
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/hotels" element={<HotelListPage />} />
+            <Route path="/hotels/:hotelId" element={<HotelDetailPage />} />
+            <Route path="/cart" element={<Home />} />
+            <Route path="/contact" element={<ContactsPage />} />
+          </Route>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="*" element={<h1>Page not found</h1>} />
+        </Routes>
+      </div>
     </MyApp.Provider>
   );
 }

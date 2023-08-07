@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 * {
   box-sizing: border-box;
@@ -65,83 +66,14 @@
   overflow-y: auto;
 }
 
-#section-booking {
-  background-image: url(https://livedemo00.template-help.com/wt_prod-19522/images/bg-image-2.jpg);
-  padding: 150px 0;
-  background-size: cover;
-  background-position: center center;
-}
 
-.section-booking-header {
-  margin-bottom: 30px;
-}
-
-.section-booking-header h1 {
-  font-size: 70px;
-  color: white;
-  font-family: 'Old Standard TT', serif;
-  line-height: 80px;
-}
-
-.section-booking-header h3 {
-  font-size: 40px;
-  color: white;
-  font-family: 'Old Standard TT', serif;
-  line-height: 60px;
-  font-weight: unset;
-}
-
-#section-booking .btn {
-  width: 100%;
-  height: 100%;
-}
 
 .img {
   vertical-align: middle;
   border-style: none;
 }
 
-@media (min-width: 426px) and (max-width: 767px) {
-  #section-booking {
-    padding: 120px 0;
-  }
 
-  .section-booking-header h1 {
-    font-size: 50px;
-    color: white;
-    font-family: 'Old Standard TT', serif;
-    line-height: 60px;
-  }
-
-  .section-booking-header h3 {
-    font-size: 30px;
-    color: white;
-    font-family: 'Old Standard TT', serif;
-    line-height: 50px;
-    font-weight: unset;
-  }
-}
-
-@media (max-width: 425px) {
-  #section-booking {
-    padding: 50px 0;
-  }
-
-  .section-booking-header h1 {
-    font-size: 30px;
-    color: white;
-    font-family: 'Old Standard TT', serif;
-    line-height: 40px;
-  }
-
-  .section-booking-header h3 {
-    font-size: 20px;
-    color: white;
-    font-family: 'Old Standard TT', serif;
-    line-height: 50px;
-    font-weight: unset;
-  }
-}
 
 #section-vision {
   padding: 70px 0;
@@ -230,103 +162,7 @@
   margin-bottom: 50px;
 }
 
-#find-rooms {
-  margin-top: 65px;
-  margin-bottom: 65px;
-}
 
-#filter {
-  background-color: #e5d8cb;
-  height: 300px;
-  font-size: 1.2rem;
-  border: 1px solid #888;
-  border-radius: 5px;
-  padding: 10px;
-}
-
-@media (min-width: 426px) and (max-width: 767px) {
-  #filter {
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 425px) {
-  #filter {
-    align-items: center;
-    width: 95%;
-    margin: 10px;
-  }
-
-  #list-room {
-    width: 100%;
-  }
-}
-
-.filter-title {
-  font-family: 'Old Standard TT', serif;
-  padding-left: 16px;
-  margin: 10px 0;
-}
-
-.item-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-.hotel-name {
-  font-size: 30px;
-  padding: 3px 0;
-  color: #c19b76;
-  font-weight: bold;
-  margin: 0;
-  line-height: 28px;
-}
-
-.rating {
-  display: block;
-  color: white;
-  background: darkblue;
-  font-size: 16px;
-  font-weight: bolder;
-  padding: 10px;
-  border-radius: 10px 10px 10px 0;
-}
-
-.room-options {
-  color: #66bb66;
-}
-
-.room-price {
-  padding-top: 15px;
-  font-size: 25px;
-  font-weight: 600;
-  color: #fd5050;
-}
-
-.item-card-footer {
-  padding-top: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.text-end {
-  display: block;
-}
-
-.btn-add-to-card {
-  --bs-btn-color: var(--bs-white) !important;
-  --bs-btn-bg: #c19b76 !important;
-  --bs-btn-hover-color: var(--bs-white);
-  --bs-btn-hover-bg: rgb(100, 100, 100);
-}
-
-.card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover !important;
-  vertical-align: middle;
-  border-style: none;
-}
 
 #footer {
   padding: 50px;
@@ -383,6 +219,9 @@
 
 #footer .menu {
   margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 #footer .menu a {
