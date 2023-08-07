@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import MyApp from "../../contexts/MyApp";
+import "./Layout.css";
 
 const Layout = () => {
-  // const activeClass = (params) => {
-  //     return params.isActive ? 'active-item' : '';
-  // };
+  const { onLogoutHandle, currentUser } = useContext(MyApp);
+
   return (
     <div>
       <header>
@@ -27,6 +28,18 @@ const Layout = () => {
                 <i className="fas fa-phone" /> +84 123 456 789
               </li>
             </div>
+            {currentUser == 0 ? (
+              ""
+            ) : (
+              <div className=" d-flex justify-content-center align-items-center gap-2 text-light">
+                <img
+                  className="rounded-circle"
+                  src={currentUser.img}
+                  style={{ width: "40px", height: "40px" }}
+                />
+                <p className="m-0">{currentUser.name}</p>
+              </div>
+            )}
             <button
               className="navbar-toggler"
               type="button"
@@ -105,22 +118,32 @@ const Layout = () => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link to="/login" className="nav-link">
-                      LOGIN
-                    </Link>
+                    {!localStorage.getItem("currentUser") ? (
+                      <Link to="/login" className="nav-link">
+                        LOGIN
+                      </Link>
+                    ) : (
+                      ""
+                    )}
                   </li>
                 </ul>
-                <form className="d-flex mt-3" role="search">
-                  <input
-                    className="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                  />
-                  <button className="btn btn-web" type="submit">
-                    Search
+              </div>
+              <div
+                className="d-flex justify-content-center"
+                style={{ width: "100%" }}
+              >
+                {localStorage.getItem("currentUser") ? (
+                  <button
+                    className="btn btn-warning rounded mb-4"
+                    style={{ width: "50%" }}
+                    type="button"
+                    onClick={onLogoutHandle}
+                  >
+                    LOGOUT
                   </button>
-                </form>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>

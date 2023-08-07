@@ -1,5 +1,5 @@
+import "./RegisterPage.css";
 import React, { useContext, useEffect } from "react";
-import "./LoginPage.css";
 import { BsFillEyeFill, BsFillEyeSlashFill } from "react-icons/bs";
 import { FaHome } from "react-icons/fa";
 import MyApp from "../../contexts/MyApp";
@@ -7,14 +7,15 @@ import { Link } from "react-router-dom";
 import img from "../imgs/sunset-5536777_1920 1.png";
 import LoadingPage from "../LoadingPage/LoadingPage";
 
-const LoginPage = () => {
+const RegisterPage = () => {
   const {
-    formikLogin,
     showPassword,
     onShowPasswordHandler,
+    formikRegister,
     loading,
     setLoading,
   } = useContext(MyApp);
+  const { handleSubmit, values, handleChange, errors } = formikRegister;
 
   useEffect(() => {
     setLoading(true);
@@ -22,8 +23,6 @@ const LoginPage = () => {
       setLoading(false);
     }, 2000);
   }, []);
-
-  const { handleSubmit, values, handleChange, errors } = formikLogin;
   return (
     <>
       {loading === true ? (
@@ -39,11 +38,11 @@ const LoginPage = () => {
           }}
         >
           <div
-            className="login container d-flex flex-wrap justify-content-between align-items-center container-fluid rounded shadow m-md-5 mt-0 m-0"
+            className="register container d-flex flex-wrap justify-content-between align-items-center container-fluid rounded shadow m-md-5 mt-0 m-0"
             style={{ padding: "0" }}
           >
             <form
-              className="login-section d-flex flex-column col-12 justify-content-center align-items-center rounded gap-4 gap-sm-3"
+              className="register-section d-flex flex-column col-12 justify-content-center align-items-center rounded-end-2 gap-4 gap-sm-3"
               onSubmit={handleSubmit}
             >
               <FaHome size={60} />
@@ -57,6 +56,41 @@ const LoginPage = () => {
                 className="d-flex flex-column align-items-center gap-2 gap-sm-0 mt-4 mt-sm-0"
                 style={{ width: "100%" }}
               >
+                <div
+                  style={{
+                    width: "80%",
+                    border: "none",
+                    outline: "none",
+                    fontSize: "17px",
+                    borderBottom: "1px solid #fff",
+                    background: "transparent",
+                  }}
+                >
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    value={values.name}
+                    onChange={handleChange}
+                    name="name"
+                    autocomplete="off"
+                    style={{
+                      border: "none",
+                      background: "transparent",
+                      outline: "none",
+                      width: "100%",
+                    }}
+                  />
+                </div>
+                {errors.name ? (
+                  <p
+                    className="text-danger m-0 d-flex"
+                    style={{ fontSize: "12px", width: "70%" }}
+                  >
+                    {errors.name}
+                  </p>
+                ) : (
+                  ""
+                )}
                 <div className="email">
                   <input
                     type="email"
@@ -76,7 +110,7 @@ const LoginPage = () => {
                 {errors.userEmail ? (
                   <p
                     className="text-danger m-0 d-flex"
-                    style={{ fontSize: "14px", width: "70%" }}
+                    style={{ fontSize: "12px", width: "70%" }}
                   >
                     {errors.userEmail}
                   </p>
@@ -95,7 +129,7 @@ const LoginPage = () => {
                   />
 
                   <button
-                    className="icon text-light"
+                    className="icon"
                     onClick={onShowPasswordHandler}
                     type="button"
                   >
@@ -109,14 +143,51 @@ const LoginPage = () => {
                 {errors.password ? (
                   <p
                     className="text-danger m-0 d-flex"
-                    style={{ fontSize: "14px", width: "70%" }}
+                    style={{ fontSize: "12px", width: "70%" }}
                   >
                     {errors.password}
                   </p>
                 ) : (
                   ""
                 )}
+                <div
+                  style={{
+                    width: "80%",
+                    border: "none",
+                    outline: "none",
+                    fontSize: "17px",
+                    borderBottom: "1px solid #fff",
+                    background: "transparent",
+                  }}
+                >
+                  <input
+                    className="confirm-password"
+                    type={showPassword}
+                    placeholder="Confirm password"
+                    value={values.confirmPassword}
+                    onChange={handleChange}
+                    name="confirmPassword"
+                    autocomplete="off"
+                    style={{
+                      border: "none",
+                      background: "transparent",
+                      outline: "none",
+                      width: "100%",
+                      margin: "0",
+                    }}
+                  />
+                </div>
               </div>
+              {errors.confirmPassword ? (
+                <p
+                  className="text-danger m-0 d-flex"
+                  style={{ fontSize: "12px", width: "70%" }}
+                >
+                  {errors.confirmPassword}
+                </p>
+              ) : (
+                ""
+              )}
               <div
                 className="d-flex flex-column justify-content-center align-items-center gap-2"
                 style={{ width: "100%", marginTop: "2%" }}
@@ -126,13 +197,13 @@ const LoginPage = () => {
                   style={{ width: "50%" }}
                   type="submit"
                 >
-                  Login
+                  Register
                 </button>
                 <Link
-                  to="/register"
-                  className="style-link link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mt-3"
+                  to="/login"
+                  className="style-link link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mt-2"
                 >
-                  Create An Account
+                  Have an Account ? Login
                 </Link>
               </div>
             </form>
@@ -143,4 +214,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;
