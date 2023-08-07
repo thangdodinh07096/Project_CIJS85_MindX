@@ -57,11 +57,9 @@ const Layout = () => {
               aria-labelledby="offcanvasDarkNavbarLabel"
             >
               <div className="offcanvas-header">
-                <a
+                <Link to="/"
                   className="offcanvas-title navbar-brand"
-                  id="offcanvasDarkNavbarLabel"
-                  href="./index.html"
-                >
+                  id="offcanvasDarkNavbarLabel">
                   <i className="fas fa-home">
                     {" "}
                     Home{" "}
@@ -69,7 +67,7 @@ const Layout = () => {
                       Stays
                     </span>
                   </i>
-                </a>
+                </Link>
                 <button
                   type="button"
                   className="btn-close btn-close-white"
@@ -85,9 +83,9 @@ const Layout = () => {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="./rooms.html">
-                      ROOMS
-                    </a>
+                    <Link to="/hotels" className="nav-link">
+                      BOOKING HOTEL
+                    </Link>
                   </li>
                   <li className="nav-item dropdown">
                     <a

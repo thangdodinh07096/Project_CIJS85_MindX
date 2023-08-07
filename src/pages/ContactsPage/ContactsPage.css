@@ -13,7 +13,9 @@
     position: relative;
 }
 
-
+.title-header-pages{
+    font-weight: 600;
+}
 .underline {
     position: absolute;
     top: 50%;

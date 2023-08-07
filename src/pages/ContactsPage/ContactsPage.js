@@ -14,21 +14,21 @@ const ContactsPage = () => {
     >
       <div
         className="contacts-custom d-flex flex-column justify-content-center align-items-start text-light ps-4"
-        style={{ marginTop: "85px" }}
+        style={{ marginTop: "85px", fontSize: "16px" }}
       >
         <div className="container">
           <div
             className="d-flex flex-column justify-content-start"
             style={{ width: "100%" }}
           >
-            <h6 className="ps-5">
+            <h6 className="ps-5" style={{ fontSize: "20px" }}>
               <p class="underline"></p>Contacts
             </h6>
-            <h1>Contacts</h1>
+            <h1 className="title-header-pages">Contacts</h1>
           </div>
           <div
             className="d-flex flex-row justify-content-start align-items-center gap-2 pt-4"
-            style={{ width: "100%" }}
+            style={{ width: "100%", fontSize: "20px" }}
           >
             <p className="m-0">Home</p>
             <BsChevronRight size={14} />

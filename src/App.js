@@ -5,8 +5,9 @@ import Home from "./pages/HomePage/Home";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Layout from "./components/Layout/Layout";
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
-import RoomsPage from "./pages/Rooms/RoomsPage";
 import MyApp from "./contexts/MyApp";
+import HotelListPage from "./pages/HotelListPage/HotelListPage";
+import HotelDetailPage from "./pages/HotelDetail/HotelDetailPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -37,7 +38,7 @@ function App() {
     };
     getUser();
   }, []);
-
+  
   const loginFormValidationScheme = yup.object().shape({
     userEmail: yup
       .string()
@@ -174,9 +175,11 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/rooms" element={<RoomsPage />} />
+            <Route path="/hotels" element={<HotelListPage />} />
+            <Route path="/hotels/:hotelId" element={<HotelDetailPage />} />
             <Route path="/cart" element={<Home />} />
             <Route path="/contact" element={<ContactsPage />} />
+            <Route path="/cart" element={<Home />} />
           </Route>
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
