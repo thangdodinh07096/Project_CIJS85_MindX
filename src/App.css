@@ -14,7 +14,7 @@
 }
 
 .navbar {
-  height: 85px;
+  height: auto;
 }
 
 .navbar-brand {
@@ -32,7 +32,7 @@
 
 .list-inline-border>* {
   padding-left: 10px;
-  padding-right: 18px;
+  padding-right: 14px;
 }
 
 .list-inline-border>li {
@@ -55,8 +55,8 @@
   }
 }
 
-.navbar-nav>li:hover {
-  background-color: #c19b76;
+.navbar-nav li:hover {
+  color: #c19b76;
 }
 
 .offcanvas-body {
@@ -175,6 +175,10 @@
 
 #service {
   padding: 70px 0;
+}
+
+#service h3{
+  cursor: pointer;
 }
 
 #service .service-icon {

@@ -16,6 +16,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState([]);
   const [showPassword, setShowPassword] = useState("password");
   const [loading, setLoading] = useState(true);
+  const [buttonToggler, setButtonToggler] = useState(true);
 
   const navigate = useNavigate();
 
@@ -24,6 +25,14 @@ function App() {
       setShowPassword("text");
     } else {
       setShowPassword("password");
+    }
+  };
+
+  const onButtonToggler = () => {
+    if (buttonToggler === true) {
+      setButtonToggler(false);
+    } else {
+      setButtonToggler(true);
     }
   };
 
@@ -73,7 +82,6 @@ function App() {
 
   useEffect(() => {
     const storedcurrentUser = JSON.parse(localStorage.getItem("currentUser"));
-
     if (storedcurrentUser) {
       setCurrentUser(storedcurrentUser);
     }
@@ -164,9 +172,11 @@ function App() {
         formikRegister: formikRegister,
         showPassword: showPassword,
         loading: loading,
+        buttonToggler: buttonToggler,
         setLoading,
         onShowPasswordHandler,
         onLogoutHandle,
+        onButtonToggler,
       }}
     >
       <div className="App">

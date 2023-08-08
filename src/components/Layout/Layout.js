@@ -2,16 +2,18 @@ import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import MyApp from "../../contexts/MyApp";
 import "./Layout.css";
+import { AiOutlineClose } from "react-icons/ai";
 
 const Layout = () => {
-  const { onLogoutHandle, currentUser } = useContext(MyApp);
+  const { onLogoutHandle, currentUser, onButtonToggler, buttonToggler } =
+    useContext(MyApp);
 
   return (
     <div>
       <header>
-        <nav className="navbar navbar-dark bg-dark fixed-top">
+        <nav className="navbar navbar-dark navbar-expand-lg bg-dark fixed-top">
           <div className="container">
-            <a className="navbar-brand" href="./">
+            <Link className="navbar-brand" to="/">
               <i className="fas fa-home">
                 {" "}
                 Home{" "}
@@ -19,75 +21,38 @@ const Layout = () => {
                   Stays
                 </span>
               </i>
-            </a>
-            <div className="list-inline-border">
-              <li>
-                <i className="fas fa-pencil-alt" /> BOOK NOW
-              </li>
-              <li>
-                <i className="fas fa-phone" /> +84 123 456 789
-              </li>
-            </div>
-            {currentUser == 0 ? (
-              ""
-            ) : (
-              <div className=" d-flex justify-content-center align-items-center gap-2 text-light">
-                <img
-                  className="rounded-circle"
-                  src={currentUser.img}
-                  style={{ width: "40px", height: "40px" }}
-                />
-                <p className="m-0">{currentUser.name}</p>
-              </div>
-            )}
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasDarkNavbar"
-              aria-controls="offcanvasDarkNavbar"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
               aria-label="Toggle navigation"
+              onClick={onButtonToggler}
             >
-              <span className="navbar-toggler-icon" />
+              {buttonToggler === true ? (
+                <span className="navbar-toggler-icon" />
+              ) : (
+                <AiOutlineClose style={{ width: "1.5em", height: "1.5em" }} />
+              )}
             </button>
             <div
-              className="offcanvas offcanvas-end text-bg-dark"
-              tabIndex={-1}
-              id="offcanvasDarkNavbar"
-              aria-labelledby="offcanvasDarkNavbarLabel"
+              className="collapse navbar-collapse justify-content-end"
+              id="navbarSupportedContent"
             >
-              <div className="offcanvas-header">
-                <a
-                  className="offcanvas-title navbar-brand"
-                  id="offcanvasDarkNavbarLabel"
-                  href="./index.html"
-                >
-                  <i className="fas fa-home">
-                    {" "}
-                    Home{" "}
-                    <span style={{ fontStyle: "italic", fontWeight: 100 }}>
-                      Stays
-                    </span>
-                  </i>
-                </a>
-                <button
-                  type="button"
-                  className="btn-close btn-close-white"
-                  data-bs-dismiss="offcanvas"
-                  aria-label="Close"
-                />
-              </div>
-              <div className="offcanvas-body">
-                <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <div className="d-block d-lg-flex justify-content-end align-items-center">
+                <ul className="navbar-nav me-auto mb-2 mb-lg-0 pe-3">
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">
+                    <Link to="/" className="nav-link active">
                       HOME
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="./rooms.html">
+                    <Link to="/rooms" className="nav-link">
                       ROOMS
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item dropdown">
                     <a
@@ -126,26 +91,109 @@ const Layout = () => {
                       ""
                     )}
                   </li>
+                  <li
+                    className="nav-item d-flex d-lg-none"
+                    style={{ padding: "8px 0" }}
+                  >
+                    {localStorage.getItem("currentUser") ? (
+                      <button
+                        className="bg-dark d-flex link-danger "
+                        style={{
+                          border: "none",
+                          outline: "none",
+                          width: "100%",
+                        }}
+                        type="button"
+                        onClick={onLogoutHandle}
+                      >
+                        LOGOUT
+                      </button>
+                    ) : (
+                      ""
+                    )}
+                  </li>
                 </ul>
+                <form className="d-flex" role="search">
+                  <input
+                    className="form-control rounded me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    style={{ height: "40px" }}
+                  />
+                  <button className="btn btn-outline-success" type="submit">
+                    Search
+                  </button>
+                </form>
               </div>
+            </div>
+            {currentUser == 0 ? (
+              ""
+            ) : (
+              <div
+                className="d-none d-lg-flex justify-content-center align-items-center gap-2 text-light"
+                style={{ marginLeft: " 15px" }}
+              >
+                <img
+                  className="rounded-circle"
+                  src={currentUser.img}
+                  style={{ width: "40px", height: "40px" }}
+                />
+                <div className="dropdown">
+                  <button
+                    className="dropdown-toggle m-0 bg-dark text-light"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    style={{
+                      outline: "none",
+                      border: "none",
+                    }}
+                  >
+                    {currentUser.name}
+                  </button>
+                  <ul className="dropdown-menu dropdown-menu-dark">
+                    <li
+                      className=""
+                      style={{
+                        height: "35px",
+                        display: "flex",
+                        width: "100%",
+                        flexWrap: "wrap",
+                        alignContent: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <button
+                        className="btn btn-danger rounded"
+                        style={{ width: "70%", height: "35px" }}
+                        type="button"
+                        onClick={onLogoutHandle}
+                      >
+                        LOGOUT
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            )}
+            {/* {localStorage.getItem("currentUser") ? (
               <div
                 className="d-flex justify-content-center"
                 style={{ width: "100%" }}
               >
-                {localStorage.getItem("currentUser") ? (
-                  <button
-                    className="btn btn-warning rounded mb-4"
-                    style={{ width: "50%" }}
-                    type="button"
-                    onClick={onLogoutHandle}
-                  >
-                    LOGOUT
-                  </button>
-                ) : (
-                  ""
-                )}
+                <button
+                  className="btn btn-warning rounded mb-4"
+                  style={{ width: "50%" }}
+                  type="button"
+                  onClick={onLogoutHandle}
+                >
+                  LOGOUT
+                </button>
               </div>
-            </div>
+            ) : (
+              ""
+            )} */}
           </div>
         </nav>
       </header>
