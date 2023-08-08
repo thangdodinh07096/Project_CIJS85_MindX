@@ -14,7 +14,7 @@ const HotelListPage = () => {
   }, []);
   return (
     <>
-      <div id="section-booking" style={{ marginTop: "5%" }}>
+      <div id="section-booking" style={{ marginTop: "85px" }}>
         <div className="container align-items=center">
           <div className="section-booking-header text-center">
             <h1>SEARCH YOUR HOTEL</h1>

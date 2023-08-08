@@ -47,7 +47,7 @@ function App() {
     };
     getUser();
   }, []);
-  
+
   const loginFormValidationScheme = yup.object().shape({
     userEmail: yup
       .string()

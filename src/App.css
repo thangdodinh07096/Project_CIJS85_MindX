@@ -15,7 +15,13 @@
 }
 
 .navbar {
-  height: auto;
+  height: 85px;
+}
+
+@media (max-width:991px) {
+  .navbar {
+    height: auto;
+  }
 }
 
 .navbar-brand {

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import MyApp from "../../contexts/MyApp";
 import "./Layout.css";
 import { AiOutlineClose } from "react-icons/ai";
@@ -13,7 +13,7 @@ const Layout = () => {
       <header>
         <nav className="navbar navbar-dark navbar-expand-lg bg-dark fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to="/">
+            <NavLink className="navbar-brand" to="/" exact="/" style={{margin:'12px 0'}}>
               <i className="fas fa-home">
                 {" "}
                 Home{" "}
@@ -21,7 +21,7 @@ const Layout = () => {
                   Stays
                 </span>
               </i>
-            </Link>
+            </NavLink>
             <button
               className="navbar-toggler"
               type="button"
@@ -42,24 +42,124 @@ const Layout = () => {
               className="collapse navbar-collapse justify-content-end"
               id="navbarSupportedContent"
             >
-              <div className="offcanvas-body">
-                <div className="d-block d-lg-flex justify-content-center align-items-center">
-                <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+              {currentUser == 0 ? (
+                <div
+                  className="d-flex d-lg-none justify-content-start align-items-center gap-2 text-light"
+                  style={{ margin: "8px 0" }}
+                >
+                  <img
+                    className="rounded-circle"
+                    src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1691505009~exp=1691505609~hmac=5d6b97d54ed2e4dcf822fc09687712673ad748fbdc77e62255f5948804b8afbd"
+                    style={{ width: "40px", height: "40px" }}
+                  />
+                  <div className="dropdown">
+                    <button
+                      className="dropdown-toggle m-0 bg-dark text-light"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      style={{
+                        outline: "none",
+                        border: "none",
+                      }}
+                    >
+                      User Account
+                    </button>
+                    <ul className="dropdown-menu dropdown-menu-dark">
+                      <li
+                        className=""
+                        style={{
+                          height: "35px",
+                          display: "flex",
+                          width: "100%",
+                          flexWrap: "wrap",
+                          alignContent: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <button
+                          className="btn btn-warning rounded d-flex align-items-center justify-content-center"
+                          style={{ width: "70%", height: "35px" }}
+                          type="button"
+                        >
+                          <Link to="/login" className="nav-link">
+                            Login
+                          </Link>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              ) : (
+                <div
+                  className="d-flex d-lg-none justify-content-start align-items-center gap-2 text-light"
+                  style={{ margin: "8px 0" }}
+                >
+                  <img
+                    className="rounded-circle"
+                    src={currentUser.img}
+                    style={{ width: "40px", height: "40px" }}
+                  />
+                  <div className="dropdown">
+                    <button
+                      className="dropdown-toggle m-0 bg-dark text-light"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      style={{
+                        outline: "none",
+                        border: "none",
+                      }}
+                    >
+                      {currentUser.name}
+                    </button>
+                    <ul className="dropdown-menu dropdown-menu-dark">
+                      <li
+                        className=""
+                        style={{
+                          height: "35px",
+                          display: "flex",
+                          width: "100%",
+                          flexWrap: "wrap",
+                          alignContent: "center",
+                          justifyContent: "center",
+                        }}
+                      >
+                        <button
+                          className="btn btn-danger rounded"
+                          style={{ width: "70%", height: "35px" }}
+                          type="button"
+                          onClick={onLogoutHandle}
+                        >
+                          Logout
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+              <div className="d-block d-lg-flex justify-content-center align-items-center ">
+                <ul className="navbar-nav justify-content-end flex-grow-1 pe-3 gap-1">
                   <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
-                    <Link to="/" className="nav-link active">
+                    <NavLink to="/" className="nav-link">
                       HOME
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
-                    <Link to="/hotels" className="nav-link">
+                    <NavLink
+                      to="/hotels"
+                      className="nav-link text-start text-lg-center"
+                    >
                       BOOKING HOTEL
-                    </Link>
+                    </NavLink>
                   </li>
-                  <li className="nav-item dropdown d-block d-lg-flex justify-content-center align-items-center">
+                  <li
+                    className="nav-item dropdown d-block d-lg-flex justify-content-center align-items-center"
+                    style={{ padding: "8px 0" }}
+                  >
                     <a
-                      className="nav-link dropdown-toggle"
-                      href="#"
-                      role="button"
+                      className="dropdown-toggle nav-link"
+                      type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
@@ -79,61 +179,61 @@ const Layout = () => {
                     </ul>
                   </li>
                   <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
-                    <Link to="/contact" className="nav-link">
+                    <NavLink to="/contact" className="nav-link">
                       CONTACT
-                    </Link>
-                  </li>
-                  <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
-                    {!localStorage.getItem("currentUser") ? (
-                      <Link to="/login" className="nav-link">
-                        LOGIN
-                      </Link>
-                    ) : (
-                      ""
-                    )}
-                  </li>
-                  <li
-                    className="nav-item d-flex d-lg-none"
-                    style={{ padding: "8px 0" }}
-                  >
-                    {localStorage.getItem("currentUser") ? (
-                      <button
-                        className="bg-dark d-flex link-danger "
-                        style={{
-                          border: "none",
-                          outline: "none",
-                          width: "100%",
-                        }}
-                        type="button"
-                        onClick={onLogoutHandle}
-                      >
-                        LOGOUT
-                      </button>
-                    ) : (
-                      ""
-                    )}
+                    </NavLink>
                   </li>
                 </ul>
-                <form className="d-flex" role="search">
-                  <input
-                    className="form-control rounded me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                    style={{ height: "40px" }}
-                  />
-                  <button
-                    className="btn btn-outline-success"
-                    type="submit"
-                    style={{ height: "40px" }}
-                  >
-                    Search
-                  </button>
-                </form></div>
               </div>
             </div>
             {currentUser == 0 ? (
-              ""
+              <div
+                className="d-none d-lg-flex justify-content-center align-items-center gap-2 text-light"
+                style={{ marginLeft: " 15px" }}
+              >
+                <img
+                  className="rounded-circle"
+                  src="https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg?w=740&t=st=1691505009~exp=1691505609~hmac=5d6b97d54ed2e4dcf822fc09687712673ad748fbdc77e62255f5948804b8afbd"
+                  style={{ width: "40px", height: "40px" }}
+                />
+                <div className="dropdown">
+                  <button
+                    className="dropdown-toggle m-0 bg-dark text-light"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                    style={{
+                      outline: "none",
+                      border: "none",
+                    }}
+                  >
+                    User Account
+                  </button>
+                  <ul className="dropdown-menu dropdown-menu-dark">
+                    <li
+                      className=""
+                      style={{
+                        height: "35px",
+                        display: "flex",
+                        width: "100%",
+                        flexWrap: "wrap",
+                        alignContent: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <button
+                        className="btn btn-warning rounded d-flex align-items-center justify-content-center"
+                        style={{ width: "70%", height: "35px" }}
+                        type="button"
+                      >
+                        <Link to="/login" className="nav-link">
+                          Login
+                        </Link>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             ) : (
               <div
                 className="d-none d-lg-flex justify-content-center align-items-center gap-2 text-light"
@@ -175,7 +275,7 @@ const Layout = () => {
                         type="button"
                         onClick={onLogoutHandle}
                       >
-                        LOGOUT
+                        Logout
                       </button>
                     </li>
                   </ul>
