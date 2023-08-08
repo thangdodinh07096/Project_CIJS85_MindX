@@ -42,19 +42,20 @@ const Layout = () => {
               className="collapse navbar-collapse justify-content-end"
               id="navbarSupportedContent"
             >
-              <div className="d-block d-lg-flex justify-content-end align-items-center">
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0 pe-3">
-                  <li className="nav-item">
+              <div className="offcanvas-body">
+                <div className="d-block d-lg-flex justify-content-center align-items-center">
+                <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
                     <Link to="/" className="nav-link active">
                       HOME
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <Link to="/rooms" className="nav-link">
-                      ROOMS
+                  <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
+                    <Link to="/hotels" className="nav-link">
+                      BOOKING HOTEL
                     </Link>
                   </li>
-                  <li className="nav-item dropdown">
+                  <li className="nav-item dropdown d-block d-lg-flex justify-content-center align-items-center">
                     <a
                       className="nav-link dropdown-toggle"
                       href="#"
@@ -77,12 +78,12 @@ const Layout = () => {
                       </li>
                     </ul>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
                     <Link to="/contact" className="nav-link">
                       CONTACT
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
                     {!localStorage.getItem("currentUser") ? (
                       <Link to="/login" className="nav-link">
                         LOGIN
@@ -121,10 +122,14 @@ const Layout = () => {
                     aria-label="Search"
                     style={{ height: "40px" }}
                   />
-                  <button className="btn btn-outline-success" type="submit">
+                  <button
+                    className="btn btn-outline-success"
+                    type="submit"
+                    style={{ height: "40px" }}
+                  >
                     Search
                   </button>
-                </form>
+                </form></div>
               </div>
             </div>
             {currentUser == 0 ? (
@@ -177,23 +182,6 @@ const Layout = () => {
                 </div>
               </div>
             )}
-            {/* {localStorage.getItem("currentUser") ? (
-              <div
-                className="d-flex justify-content-center"
-                style={{ width: "100%" }}
-              >
-                <button
-                  className="btn btn-warning rounded mb-4"
-                  style={{ width: "50%" }}
-                  type="button"
-                  onClick={onLogoutHandle}
-                >
-                  LOGOUT
-                </button>
-              </div>
-            ) : (
-              ""
-            )} */}
           </div>
         </nav>
       </header>
