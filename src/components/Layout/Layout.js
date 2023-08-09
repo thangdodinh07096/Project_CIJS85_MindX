@@ -13,7 +13,6 @@ const Layout = () => {
       <header>
         <nav className="navbar navbar-dark navbar-expand-lg bg-dark fixed-top">
           <div className="container">
-
             <NavLink
               className="navbar-brand"
               to="/"
@@ -27,7 +26,6 @@ const Layout = () => {
                   Stays
                 </span>
               </i>
-
             </NavLink>
             <button
               className="navbar-toggler"
@@ -49,7 +47,6 @@ const Layout = () => {
               className="collapse navbar-collapse justify-content-end"
               id="navbarSupportedContent"
             >
-
               {currentUser == 0 ? (
                 <div
                   className="d-flex d-lg-none justify-content-start align-items-center gap-2 text-light"
