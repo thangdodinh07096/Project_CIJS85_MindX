@@ -1,4 +1,5 @@
 import React from 'react'
+import CarouselSlides from '../../components/CarouselSlides/CarouselSlides'
 
 const Home = () => {
   return (
@@ -59,7 +60,7 @@ const Home = () => {
               </p>
             </div>
             <div className="col-md-10 col-lg-6 col-xl-5">
-              <img className="slideInLeft" src="https://livedemo00.template-help.com/wt_prod-19522/images/job-portal-1-570x368.jpg" alt />
+              <img className="slideInLeft" src="https://livedemo00.template-help.com/wt_prod-19522/images/job-portal-1-570x368.jpg" />
             </div>
           </div>
         </div>
@@ -70,49 +71,11 @@ const Home = () => {
             <span style={{ fontStyle: 'italic', fontWeight: 500 }}>Our</span> Rooms
           </h1>
           <div className="row row-cols-1 row-cols-md-3 g-4">
-            <div className="col">
-              <div className="card h-100">
-                <img src="./Image/room01.jpg" className="card-img-top" alt="..." />
-                <div className="card-body">
-                  <div className="card-title item-header">
-                    <h1 className="hotel-name">Single Room</h1>
-                  </div>
-                  <div className="room-price pricePerNight">45$ <span style={{ fontSize: 15, color: 'black' }}>per
-                    night</span></div>
-                  <p className="card-text">1-2 Guests</p>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card h-100">
-                <img src="./Image/room02.jpg" className="card-img-top" alt="..." />
-                <div className="card-body">
-                  <div className="card-title item-header">
-                    <h1 className="hotel-name">Double room</h1>
-                  </div>
-                  <div className="room-price pricePerNight">75$ <span style={{ fontSize: 15, color: 'black' }}>per
-                    night</span></div>
-                  <p className="card-text">2-4 Guests</p>
-                </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="card h-100">
-                <img src="./Image/room03.jpg" className="card-img-top" alt="..." />
-                <div className="card-body">
-                  <div className="card-title item-header">
-                    <h1 className="hotel-name">Family room</h1>
-                  </div>
-                  <div className="room-price pricePerNight">105$ <span style={{ fontSize: 15, color: 'black' }}>per
-                    night</span></div>
-                  <p className="card-text">4-6 Guests</p>
-                </div>
-              </div>
-            </div>
+          <CarouselSlides />
           </div>
           <div className="row justify-content-center">
             <div className="col-lg-4 col-md-6 col-sm-12 text-center">
-              <a type href="./rooms.html" className="btn btn-add-to-card">VIEW ALL ROOM</a>
+              <a href="./rooms.html" className="btn btn-hotels">VIEW ALL ROOM</a>
             </div>
           </div>
         </div>
@@ -174,7 +137,7 @@ const Home = () => {
               surely have a great stay
               at our city and enjoy your holiday.</p>
             <div className="col-lg-4 col-md-6 col-sm-12 text-center">
-              <a type="submit" className="btn btn-add-to-card">READ MORE</a>
+              <a type="submit" href='/' className="btn btn-hotels">READ MORE</a>
             </div>
           </div>
         </div>

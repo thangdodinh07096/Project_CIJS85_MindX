@@ -1,31 +1,32 @@
 import React, { useState, useEffect } from 'react'
 import "./HotelDetailPage.css"
 import { BsChevronRight } from "react-icons/bs";
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import RecomenedHotelList from '../../components/Hotels/RecomenedHotelList';
+import MainUtilities from '../../components/Hotels/MainUtilities';
+import RoomList from '../../components/Hotels/RoomList';
 
 const HotelDetailPage = () => {
     const param = useParams();
     const [hotelDetail, setHotelDetail] = useState([]);
-    const [show, setShow] = useState(false);
+    const [showRooms, setShowRooms] = useState(false);
+    const [showDescription, setShowDescription] = useState(false);
 
     useEffect(() => {
         fetch(`https://64b7a00d21b9aa6eb078a794.mockapi.io/hotels`)
             .then((response) => response.json())
             .then((data) => {
-                setHotelDetail(data.find(hotel => hotel.hotelId = param.hotelId));
+                setHotelDetail(data.find(hotel => hotel.hotelId == param.hotelId));
             });
+    }, [param.hotelId]);
 
-    }, [])
-    // const [hotelRooms, setHotelRooms] = useState(hotelDetail.rooms);
-
-    // // setHotelRooms(hotelDetail.rooms)
-    // console.log(hotelRooms)
+    // useEffect(() => setHotelMainUtilities(hotelDetail.mainUtiLities))
+    // console.log([hotelDetail])
     return (
-        <div>
-            <div
-                className="hotel-detail-custom d-flex flex-column justify-content-center align-items-start text-light ps-4"
+        <div style={{ backgroundColor: "rgb(245 246 250)" }}>
+            <div className="hotel-detail-custom d-flex flex-column justify-content-center align-items-start text-light ps-4"
                 style={{
                     marginTop: "85px"
                 }}
@@ -54,11 +55,13 @@ const HotelDetailPage = () => {
             </div>
 
             <div className='content-hotel-detail container'>
-                <div className='row'>
+                <div className='row bg-section-hotel-detail' style={{ padding: "20px 0 20px 0" }}>
                     <div className='col-7'>
                         <div className='hotel-name-detail'>{hotelDetail.hotelName}</div>
                         <div className='hotel-nametag'>{hotelDetail.hotelName}</div>
-                        <div className='hotel-address'><i class="fas fa-map-marker-alt" style={{ color: "#4d67ce" }}></i> {hotelDetail.buildingNumber}, {hotelDetail.street}, {hotelDetail.district}, {hotelDetail.city}, Việt Nam</div>
+                        <div className='hotel-address'>
+                            <i className="fas fa-map-marker-alt" style={{ color: "#4d67ce" }}></i> {hotelDetail.buildingNumber}, {hotelDetail.street}, {hotelDetail.district}, {hotelDetail.city}, Việt Nam
+                        </div>
                     </div>
                     <div className='col-3 text-end'>
                         <div className='rating-hotel-detail row'>
@@ -74,42 +77,72 @@ const HotelDetailPage = () => {
                     <div className='col-2'>
                         <div className='text-end'>Price per night from:</div>
                         <h5 className="room-price-detail text-end">{hotelDetail.price} $</h5>
-
                         <div className="d-flex justify-content-end">
-                            <Button className='btn-booking-room mr-xs' onClick={() => setShow(true)}>
+                            <Button className='btn-booking-room mr-xs btn-hotels' onClick={() => setShowRooms(true)}>
                                 Booking room
                             </Button>
                         </div>
-
                     </div>
-
                     <Modal
                         size="xl"
-                        show={show}
-                        onHide={() => setShow(false)}
-                        aria-labelledby="modal-title"
+                        show={showRooms}
+                        onHide={() => setShowRooms(false)}
+                        aria-labelledby="modal-title-rooms"
                     >
                         <Modal.Header closeButton>
-                            <Modal.Title id="modal-title">
-                                {hotelDetail.hotelName}
+                            <Modal.Title id="modal-title-rooms" style={{ fontWeight: "600", fontSize: "25px" }}>
+                                {hotelDetail.hotelName} ROOMS
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <p>
-                                {hotelDetail.description}
-                            </p>
+                            <div className='container'>
+                                <RoomList rooms={hotelDetail.rooms} />
+                            </div>
                         </Modal.Body>
                     </Modal>
-
                 </div>
                 <div className='row'>
                     <div className='col-4 hotel-detail-service'>
-                        <div></div>
-                        <div></div>
+                        <div className='hotel-detail-facilities hotel-detail-service-item bg-section-hotel-detail'>
+                            <h2 className='title-service-detail'>
+                                Main Facilities
+                            </h2>
+                            <div className='row' style={{ paddingLeft: "20px" }}>
+                                <MainUtilities mainUtiLities={hotelDetail.mainUtiLities} />
+                            </div>
+                        </div>
+                        <div className='hotel-detail-description hotel-detail-service-item bg-section-hotel-detail'>
+                            <h2 className='title-service-detail'>
+                                About Accommodation
+                            </h2>
+                            <div className='taj description-hotel'>{hotelDetail.description}</div>
+                            <div className="d-flex justify-content-end">
+                                <Button className='btn-see-more mr-xs btn-hotels' onClick={() => setShowDescription(true)}>
+                                    See more
+                                </Button>
+                                <Modal
+                                    size="xl"
+                                    show={showDescription}
+                                    onHide={() => setShowDescription(false)}
+                                    aria-labelledby="modal-title-description"
+                                >
+                                    <Modal.Header closeButton>
+                                        <Modal.Title id="modal-title-description" style={{ fontWeight: "600", fontSize: "25px" }}>
+                                            {hotelDetail.hotelName} Description
+                                        </Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <p>
+                                            {hotelDetail.description}
+                                        </p>
+                                    </Modal.Body>
+                                </Modal>
+                            </div>
+                        </div>
                     </div>
                     <div className='col-8 carousel-outside'>
                         <div id="carouselExampleControls" className="carousel slide d-flex" data-bs-ride="carousel">
-                            <div className="carousel-inner" style={{borderRadius: "2%"}}>
+                            <div className="carousel-inner" style={{ borderRadius: "8px" }}>
                                 <div className="carousel-item active">
                                     <img src={hotelDetail.img} className="d-block w-100" alt="..." />
                                 </div>
@@ -131,12 +164,20 @@ const HotelDetailPage = () => {
                         </div>
                     </div>
                 </div>
-
+                <div className="recommend-section bg-section-hotel-detail" style={{ padding: "20px 0 20px 0" }}>
+                    <h3 className="text-center">Other Hotels You Might Like</h3>
+                    <RecomenedHotelList hotelDetail={hotelDetail} />
+                    <div className='d-flex justify-content-center'>
+                        <div className='btn btn-hotels' style={{ marginTop: "20px", paddingLeft: "20px", paddingRight: "20px" }}>
+                            <Link to={`/hotels`}>
+                                View Other
+                            </Link>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
 }
 
 export default HotelDetailPage
-
-

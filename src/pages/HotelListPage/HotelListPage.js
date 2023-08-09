@@ -3,6 +3,7 @@ import "./HotelListPage.css"
 import HotelItem from "../../components/Hotels/HotelItem";
 
 const HotelListPage = () => {
+
     const [hotelList, setHotelList] = useState([]);
 
     useEffect(() => {
@@ -13,6 +14,9 @@ const HotelListPage = () => {
             });
 
     }, [])
+
+    // console.log(hotelList)
+
     return (
         <>
             <div id="section-booking" style={{ marginTop: 85 }}>
@@ -30,7 +34,7 @@ const HotelListPage = () => {
                             <input type="number" className="form-control" id="guests" placeholder="Guests" />
                         </div>
                         <div className="col-lg-2 col-md-2 col-sm-12">
-                            <button type="submit" className="btn btn-add-to-card">SEARCH</button>
+                            <button type="submit" className="btn btn-hotels">SEARCH</button>
                         </div>
                     </form>
                 </div>
@@ -118,10 +122,9 @@ const HotelListPage = () => {
                             {hotelList.map((hotelItem, index) => {
                                 return (
                                     <HotelItem
-                                        index={hotelItem.hotelId}
+                                        id={hotelItem.hotelId}
                                         // onClick={() => handleAddToCart(hotelItem)}
                                         hotelName={hotelItem.hotelName}
-                                        address={hotelItem.address}
                                         img={hotelItem.img}
                                         rating={hotelItem.rating}
                                         price={hotelItem.price}

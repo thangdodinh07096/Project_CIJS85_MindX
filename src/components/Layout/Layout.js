@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import MyApp from "../../contexts/MyApp";
 import "./Layout.css";
 
@@ -11,7 +11,8 @@ const Layout = () => {
       <header>
         <nav className="navbar navbar-dark bg-dark fixed-top">
           <div className="container">
-            <a className="navbar-brand" href="./">
+            <Link to="/"
+              className="navbar-brand">
               <i className="fas fa-home">
                 {" "}
                 Home{" "}
@@ -19,7 +20,7 @@ const Layout = () => {
                   Stays
                 </span>
               </i>
-            </a>
+            </Link>
             <div className="list-inline-border">
               <li>
                 <i className="fas fa-pencil-alt" /> BOOK NOW
@@ -28,7 +29,7 @@ const Layout = () => {
                 <i className="fas fa-phone" /> +84 123 456 789
               </li>
             </div>
-            {currentUser == 0 ? (
+            {currentUser === 0 ? (
               ""
             ) : (
               <div className=" d-flex justify-content-center align-items-center gap-2 text-light">
@@ -78,9 +79,9 @@ const Layout = () => {
               <div className="offcanvas-body">
                 <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                   <li className="nav-item">
-                    <a className="nav-link active" aria-current="page" href="#">
+                    <Link to="/" className="nav-link">
                       HOME
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
                     <Link to="/hotels" className="nav-link">

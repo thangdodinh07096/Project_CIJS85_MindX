@@ -6,7 +6,7 @@ address {
 
 #section-booking {
     background-image: url(https://livedemo00.template-help.com/wt_prod-19522/images/bg-image-2.jpg);
-    padding: 150px 0;
+    padding: 100px 0;
     background-size: cover;
     background-position: center center;
 }
@@ -33,6 +33,12 @@ address {
 #section-booking .btn {
     width: 100%;
     height: 100%;
+}
+
+#section-booking h1 {
+    position: relative;
+    animation-name: topDown;
+    animation-duration: 7s;
 }
 
 #find-rooms {
@@ -113,8 +119,8 @@ address {
 }
 
 .room-options {
-    color: #5874e5cc;
     font-weight: 500;
+    padding-bottom: 10px;
 }
 
 .room-price {
@@ -132,13 +138,6 @@ address {
 
 .text-end {
     display: block;
-}
-
-.btn-add-to-card {
-    --bs-btn-color: var(--bs-white) !important;
-    --bs-btn-bg: #c19b76 !important;
-    --bs-btn-hover-color: var(--bs-white);
-    --bs-btn-hover-bg: rgb(100, 100, 100);
 }
 
 .card-img {

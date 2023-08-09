@@ -63,8 +63,7 @@ const ContactsPage = () => {
       <div
         style={{
           background: "rgb(236 240 243)",
-          height: "auto",
-          height: "auto",
+          height: "auto"
         }}
       >
         <section className="range container pt-5 pb-5">
