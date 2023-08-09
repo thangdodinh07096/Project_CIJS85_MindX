@@ -33,8 +33,7 @@ const HotelItem = ({ id, hotelName, img, price, rating, city, district, street, 
                                                 </div>
                                             </div>
                                         );
-                                    }
-                                    )
+                                    })
                                 }
                             </div>
                             <div className="text-end">
