@@ -30,10 +30,15 @@ const HotelBookingPage = () => {
               proceeding to payment.
             </h3>
           </div>
-          <div className="row container">
+          <div
+            className="row container"
+            style={{
+              margin: "0",
+            }}
+          >
             <div className="col-12 col-lg-8 p-0" style={{ height: "100%" }}>
               <div
-                className="user row rounded border mb-4"
+                className="user row rounded border mb-5"
                 style={{ height: "76px" }}
               >
                 <div className="col-12 d-flex align-items-center justify-content-start gap-2">
@@ -53,7 +58,7 @@ const HotelBookingPage = () => {
                 <div className="information mb-3">Your Information</div>
               </div>
               <div
-                className="rounded border p-3 mb-4"
+                className="rounded border p-3 mb-5"
                 style={{
                   boxShadow: "rgba(3, 18, 26, 0.2) 0px 1px 2px",
                 }}
@@ -93,7 +98,7 @@ const HotelBookingPage = () => {
                 <span className="details">Price details</span>
               </div>
               <div
-                className="rounded border mb-4"
+                className="rounded border mb-5"
                 style={{ boxShadow: "rgba(3, 18, 26, 0.2) 0px 1px 2px" }}
               >
                 <div className="total row p-3 mb-3">
