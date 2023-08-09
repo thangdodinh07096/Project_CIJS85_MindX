@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Link, Outlet } from "react-router-dom";
 import MyApp from "../../contexts/MyApp";
 import "./Layout.css";
 import { AiOutlineClose } from "react-icons/ai";

@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./pages/HomePage/Home";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -11,6 +11,7 @@ import HotelDetailPage from "./pages/HotelDetail/HotelDetailPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import ScrollToTop from "./components/ReactHook/ScrollToTop";
 import HotelBookingPage from "./pages/HotelBookingPage/HotelBookingPage";
 
 function App() {
@@ -182,6 +183,7 @@ function App() {
       }}
     >
       <div className="App">
+        <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
