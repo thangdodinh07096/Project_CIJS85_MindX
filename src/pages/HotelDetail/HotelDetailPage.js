@@ -165,7 +165,7 @@ const HotelDetailPage = () => {
                     </div>
                 </div>
                 <div className="recommend-section bg-section-hotel-detail" style={{ padding: "20px 0 20px 0" }}>
-                    <h3 className="text-center">Other Hotels You Might Like</h3>
+                    <h3 className="text-center" style={{fontWeight:"700"}}>Other Hotels You Might Like</h3>
                     <RecomenedHotelList hotelDetail={hotelDetail} />
                     <div className='d-flex justify-content-center'>
                         <div className='btn btn-hotels' style={{ marginTop: "20px", paddingLeft: "20px", paddingRight: "20px" }}>

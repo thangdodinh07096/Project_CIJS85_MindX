@@ -12,12 +12,14 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import ScrollToTop from "./components/ReactHook/ScrollToTop";
+import HotelBookingPage from "./pages/HotelBookingPage/HotelBookingPage";
 
 function App() {
   const [usersData, setUsersData] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
   const [showPassword, setShowPassword] = useState("password");
   const [loading, setLoading] = useState(true);
+  const [buttonToggler, setButtonToggler] = useState(true);
 
   const navigate = useNavigate();
 
@@ -26,6 +28,14 @@ function App() {
       setShowPassword("text");
     } else {
       setShowPassword("password");
+    }
+  };
+
+  const onButtonToggler = () => {
+    if (buttonToggler === true) {
+      setButtonToggler(false);
+    } else {
+      setButtonToggler(true);
     }
   };
 
@@ -75,7 +85,6 @@ function App() {
 
   useEffect(() => {
     const storedcurrentUser = JSON.parse(localStorage.getItem("currentUser"));
-
     if (storedcurrentUser) {
       setCurrentUser(storedcurrentUser);
     }
@@ -153,7 +162,6 @@ function App() {
           };
           addUser();
           navigate("/login");
-
           break;
       }
     },
@@ -167,9 +175,11 @@ function App() {
         formikRegister: formikRegister,
         showPassword: showPassword,
         loading: loading,
+        buttonToggler: buttonToggler,
         setLoading,
         onShowPasswordHandler,
         onLogoutHandle,
+        onButtonToggler,
       }}
     >
       <div className="App">
@@ -182,6 +192,7 @@ function App() {
             <Route path="/cart" element={<Home />} />
             <Route path="/contact" element={<ContactsPage />} />
             <Route path="/cart" element={<Home />} />
+            <Route path="/hotelBooking" element={<HotelBookingPage />} />
           </Route>
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
