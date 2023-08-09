@@ -14,7 +14,7 @@ const ContactsPage = () => {
     >
       <div
         className="contacts-custom d-flex flex-column justify-content-center align-items-start text-light ps-4"
-        style={{ marginTop: "85px", fontSize: "16px" }}
+        style={{ marginTop: "85px" }}
       >
         <div className="container">
           <div
