@@ -13,7 +13,12 @@ const Layout = () => {
       <header>
         <nav className="navbar navbar-dark navbar-expand-lg bg-dark fixed-top">
           <div className="container">
-            <NavLink className="navbar-brand" to="/" exact="/" style={{margin:'12px 0'}}>
+            <NavLink
+              className="navbar-brand"
+              to="/"
+              exact="/"
+              style={{ margin: "12px 0" }}
+            >
               <i className="fas fa-home">
                 {" "}
                 Home{" "}
@@ -181,6 +186,11 @@ const Layout = () => {
                   <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
                     <NavLink to="/contact" className="nav-link">
                       CONTACT
+                    </NavLink>
+                  </li>
+                  <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
+                    <NavLink to="/hotelBooking" className="nav-link">
+                      HOTEL BOOKING
                     </NavLink>
                   </li>
                 </ul>

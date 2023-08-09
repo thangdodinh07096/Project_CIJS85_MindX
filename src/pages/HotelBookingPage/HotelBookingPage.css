@@ -1,0 +1,121 @@
+
+.user {
+    padding: 16px;
+    margin: 0px;
+    box-shadow: rgba(3, 18, 26, 0.2) 0px 1px 2px;
+}
+
+.user img {
+    height: 40px;
+    width: 40px;
+}
+
+.user div h3 {
+    font-size: 16px;
+    color: rgb(3, 18, 26);
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.user div p {
+    font-size: 14px;
+    color: rgb(104, 113, 118);
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.img {
+    background-image: url('https://ik.imagekit.io/tvlk/image/imageResource/2018/07/27/1532667628823-8d3fb51a3735f35d48dfcd223d2f8bde.svg?tr=q-75,w-170');
+}
+
+.information {
+    color: rgb(3, 18, 26);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.booking h1 { 
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.booking h3 {
+    font-weight: 500;
+}
+
+.form label {
+    color: rgb(3, 18, 26);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 28px;
+}
+
+.form span {
+    color: rgb(104, 113, 118);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.form input {
+    padding: 0 8px;
+}
+
+.details {
+    color: rgb(3, 18, 26);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.total span {
+    color: rgb(3, 18, 26);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.text {
+    padding: 1rem 0.8rem;
+}
+
+.text img {
+    width: 24px;
+    height: 24px;
+    object-fit: fill;
+    object-position: 50% 50%;
+}
+
+.text span {
+    color: rgb(1, 148, 243);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.total-body {
+    color: rgb(3, 18, 26);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.button-review {
+    line-height:1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 700;
+    padding: 8px;
+    border: none;
+    outline: none;
+    background: #c19b76;
+}
+
+.button-review:hover {
+    background: #413F42;
+    box-shadow: 8px 8px 5px #aaaaaa;
+    transition: all 0.3s ease;
+}

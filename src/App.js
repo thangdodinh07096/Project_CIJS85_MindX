@@ -11,6 +11,7 @@ import HotelDetailPage from "./pages/HotelDetail/HotelDetailPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import HotelBookingPage from "./pages/HotelBookingPage/HotelBookingPage";
 
 function App() {
   const [usersData, setUsersData] = useState([]);
@@ -189,6 +190,7 @@ function App() {
             <Route path="/cart" element={<Home />} />
             <Route path="/contact" element={<ContactsPage />} />
             <Route path="/cart" element={<Home />} />
+            <Route path="/hotelBooking" element={<HotelBookingPage />} />
           </Route>
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
