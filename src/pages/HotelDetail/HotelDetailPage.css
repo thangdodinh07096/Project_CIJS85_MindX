@@ -193,7 +193,7 @@
     display: -webkit-box;
 }
 
-.btn-see-more{
+.btn-see-more {
     border: none;
     font-size: 14px;
     margin: 10px 20px 0 0;
@@ -203,4 +203,13 @@
     background-color: white;
     border-radius: 8px;
     margin: 10px 0 10px 0;
+}
+
+.splide__slide img {
+    width: 100%;
+    height: auto;
+}
+
+.list-room-item{
+    padding: 0;
 }

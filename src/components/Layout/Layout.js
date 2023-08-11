@@ -188,11 +188,6 @@ const Layout = () => {
                       CONTACT
                     </NavLink>
                   </li>
-                  <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
-                    <NavLink to="/hotelBooking" className="nav-link">
-                      HOTEL BOOKING
-                    </NavLink>
-                  </li>
                 </ul>
               </div>
             </div>
