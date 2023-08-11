@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./pages/HomePage/Home";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -42,7 +42,7 @@ function App() {
     }
   };
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     const getUser = async () => {
       const response = await fetch(
         "https://64b3e84f0efb99d862688494.mockapi.io/userData"
@@ -52,6 +52,10 @@ function App() {
     };
     getUser();
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const loginFormValidationScheme = yup.object().shape({
     userEmail: yup
@@ -164,6 +168,7 @@ function App() {
             const context = await rawResponse.json();
           };
           addUser();
+          fetchData();
           navigate("/login");
           break;
       }
@@ -184,6 +189,7 @@ function App() {
         onShowPasswordHandler,
         onLogoutHandle,
         onButtonToggler,
+        fetchData,
       }}
     >
       <div className="App">
