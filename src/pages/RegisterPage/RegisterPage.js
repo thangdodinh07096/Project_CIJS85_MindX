@@ -14,6 +14,7 @@ const RegisterPage = () => {
     formikRegister,
     loading,
     setLoading,
+    fetchData,
   } = useContext(MyApp);
   const { handleSubmit, values, handleChange, errors } = formikRegister;
 
@@ -192,13 +193,14 @@ const RegisterPage = () => {
                 className="d-flex flex-column justify-content-center align-items-center gap-2"
                 style={{ width: "100%", marginTop: "2%" }}
               >
-                  <button
-                    className="btn btn-warning text-light"
-                    style={{ width: "50%" }}
-                    type="submit"
-                  >
-                    Register
-                  </button>
+                <button
+                  className="btn btn-warning text-light"
+                  style={{ width: "50%" }}
+                  type="submit"
+                  onClick={fetchData}
+                >
+                  Register
+                </button>
                 <Link
                   to="/login"
                   className="style-link link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mt-2"
