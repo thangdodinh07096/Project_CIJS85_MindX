@@ -158,30 +158,15 @@ const Layout = () => {
                       BOOKING HOTEL
                     </NavLink>
                   </li>
-                  <li
-                    className="nav-item dropdown d-block d-lg-flex justify-content-center align-items-center"
-                    style={{ padding: "8px 0" }}
-                  >
-                    <a
-                      className="dropdown-toggle nav-link"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      PAGES
-                    </a>
-                    <ul className="dropdown-menu dropdown-menu-dark">
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          Blog
-                        </a>
-                      </li>
-                      <li>
-                        <a className="dropdown-item" href="#">
-                          Team
-                        </a>
-                      </li>
-                    </ul>
+                  {/* <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
+                    <NavLink to="/blog" className="nav-link">
+                      BLOG
+                    </NavLink>
+                  </li> */}
+                  <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
+                    <NavLink to="/aboutUs" className="nav-link">
+                      ABOUT US
+                    </NavLink>
                   </li>
                   <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
                     <NavLink to="/contact" className="nav-link">

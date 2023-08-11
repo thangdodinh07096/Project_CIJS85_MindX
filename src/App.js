@@ -14,6 +14,8 @@ import * as yup from "yup";
 import ScrollToTop from "./components/ReactHook/ScrollToTop";
 import HotelBookingPage from "./pages/HotelBookingPage/HotelBookingPage";
 import RoomContext from "./contexts/RoomContext";
+import AboutUsPage from "./pages/AboutUs/AboutUsPage";
+import BlogPage from "./pages/BlogPage/BlogPage";
 
 function App() {
   const [usersData, setUsersData] = useState([]);
@@ -191,10 +193,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/hotels" element={<HotelListPage />} />
             <Route path="/hotels/:hotelId" element={<HotelDetailPage />} />
-            <Route path="/cart" element={<Home />} />
-            <Route path="/contact" element={<ContactsPage />} />
-            <Route path="/cart" element={<Home />} />
             <Route path="/hotelBooking/:hotelId/:roomId" element={<HotelBookingPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/aboutUs" element={<AboutUsPage />} />
+            <Route path="/contact" element={<ContactsPage />} />
           </Route>
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />

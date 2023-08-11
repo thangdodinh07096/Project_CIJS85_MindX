@@ -39,27 +39,25 @@ const Home = () => {
       <div id="section-vision" style={{ backgroundColor: "#f5f6fa" }}>
         <div className="container">
           <div className="row row-50 justify-content-center justify-content-lg-between flex-lg-row-reverse">
-            <div className="col-md-10 col-lg-6 col-xl-5">
+            <div className="col-md-10 col-lg-6 col-xl-6">
               <h1 className="my-title">
                 Relax at Our{" "}
                 <span style={{ fontStyle: "italic", fontWeight: 500 }}>
                   Homestay
                 </span>
               </h1>
-              <p>
-                <span>
-                  HomeStays and Suites is a family-owned Boutique Hotel that
-                  desires to cater and provide guests with personalized
-                  hospitality based on what they prefer.
-                </span>
-              </p>
-              <p>
-                <span>
-                  Whether the guest is looking for quiet time and lots of
-                  privacy or seeking energetic, friendly environment in the most
-                  delightful place away from home, we can provide it.
-                </span>
-              </p>
+              <div className="taj" style={{ fontSize: "18px" }}>
+                HomeStays and Suites is a family-owned Boutique Hotel that
+                desires to cater and provide guests with personalized
+                hospitality based on what they prefer. HomeStays and Suites is a family-owned Boutique Hotel that
+                desires to cater and provide guests with personalized
+                hospitality based on what they prefer.
+              </div>
+              <div className="taj mt-3" style={{ fontSize: "18px" }}>
+                Whether the guest is looking for quiet time and lots of
+                privacy or seeking energetic, friendly environment in the most
+                delightful place away from home, we can provide it.
+              </div>
               <p>
                 <a className="navbar-brand" href="./index.html">
                   <i className="fas fa-home">
@@ -72,9 +70,9 @@ const Home = () => {
                 </a>
               </p>
             </div>
-            <div className="col-md-10 col-lg-6 col-xl-5">
+            <div className="col-md-10 col-lg-6 col-xl-6">
               <img
-                className="slideInLeft"
+                className="text-end"
                 src="https://livedemo00.template-help.com/wt_prod-19522/images/job-portal-1-570x368.jpg"
                 alt
               />
@@ -254,7 +252,7 @@ const Home = () => {
                 <i className="fa fa-swimmer" />
               </div>
               <h3 className="service-title">Swimming Pool</h3>
-              <div className="content-service">
+              <div className="content-service taj">
                 One of the main attractions at the hotel is our extensive,
                 luxurious 20-metre indoor swimming pool.
               </div>
@@ -264,7 +262,7 @@ const Home = () => {
                 <i className="fa fa-wifi" />
               </div>
               <h3 className="service-title">Free Wifi</h3>
-              <div className="content-service">
+              <div className="content-service taj">
                 We provide our guests with free high-speed Wi-Fi connection
                 throughout the whole hotel area.
               </div>
@@ -274,7 +272,7 @@ const Home = () => {
                 <i className="fa fa-egg" />
               </div>
               <h3 className="service-title">Restaurants</h3>
-              <div className="content-service">
+              <div className="content-service taj">
                 Restaurants at Lux Hotel offer a vast choice of great dishes
                 that can satisfy even the most exquisite tastes.
               </div>
@@ -284,7 +282,7 @@ const Home = () => {
                 <i className="fa fa-bicycle" />
               </div>
               <h3 className="service-title">Bike Rentals</h3>
-              <div className="content-service">
+              <div className="content-service taj">
                 Our hotel also offers bike rental services to our guests and
                 visitors. We provide bikes at very affordable prices.
               </div>
@@ -299,7 +297,7 @@ const Home = () => {
             <h3 style={{ fontStyle: "italic" }}>Your Holiday</h3>
           </div>
           <div className="row justify-content-center">
-            <p className="text-center">
+            <p className="taj text-center ">
               With a variety of activities and amenities available at our hotel,
               you will surely have a great stay at our city and enjoy your
               holiday.
