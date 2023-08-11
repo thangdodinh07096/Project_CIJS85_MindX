@@ -1,316 +1,1021 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 import "./HotelBookingPage.css";
-import MyApp from "../../contexts/MyApp";
+import HotelBooking from "../../components/Hotels/HotelBooking";
 
 const HotelBookingPage = () => {
-  const { currentUser } = useContext(MyApp);
+
+  const mockDataHotel = [
+    {
+      "createdAt": "2023-07-28T08:23:48.570Z",
+      "hotelName": "Merry Land Hotel",
+      "price": "142.15",
+      "img": "https://loremflickr.com/640/480/city",
+      "city": "Hà Nội",
+      "district": "Hoàn Kiếm",
+      "street": "Hàng Bông",
+      "buildingNumber": "27",
+      "rating": 8.2,
+      "description": "For you, travelers who wish to travel comfortably on a budget, Daun Bali Seminyak Hotel is the perfect place to stay that provides decent facilities as well as great services. From business event to corporate gathering, Daun Bali Seminyak Hotel provides complete services and facilities that you and your colleagues need. Have fun with various entertaining facilities for you and the whole family at Daun Bali Seminyak Hotel, a wonderful accommodation for your family holiday. If you plan to have a long-term stay, staying at Daun Bali Seminyak Hotel is the right choice for you. Providing wide range of facilities and great service quality, this accommodation certainly makes you feel at home. Be ready to get the unforgettable stay experience by its exclusive service, completed by a full range of facilities to cater all your needs. Have an enjoyable and relaxing day at the pool, whether you’re traveling solo or with your loved ones. Get the best deal for finest quality of spa treatment to unwind and rejuvenate yourself. 24-hours front desk is available to serve you, from check-in to check-out, or any assistance you need. Should you desire more, do not hesitate to ask the front desk, we are always ready to accommodate you. Savor your favorite dishes with special cuisines from Daun Bali Seminyak Hotel exclusively for you. WiFi is available within public areas of the property to help you to stay connected with family and friends. Daun Bali Seminyak Hotel is a hotel with great comfort and excellent service according to most hotel's guests. Get precious and unforgettable moment during your stay at Daun Bali Seminyak Hotel.",
+      "mainUtiLities": [
+        {
+          "mainUtiLitiesId": "ariconditional",
+          "title": "Máy lạnh",
+          "mainUtiLitiesImg": "https://cdn-icons-png.flaticon.com/512/4274/4274364.png"
+        },
+        {
+          "mainUtiLitiesId": "resturant",
+          "title": "Nhà hàng",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833794378-eb51eee62d46110b712e327108299ea6.png"
+        },
+        {
+          "mainUtiLitiesId": "24hreception",
+          "title": "Lễ tân 24h",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833738654-d8acba985778fc0cc5dd1d56d6cf48c5.png"
+        },
+        {
+          "mainUtiLitiesId": "parking",
+          "title": "Chỗ đậu xe",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833756238-56e24fb64a964d38b8f393bf093a77a9.png"
+        },
+        {
+          "mainUtiLitiesId": "elevator",
+          "title": "Thang máy",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833714411-48c9b7565018d02dc32837738df1c917.png"
+        },
+        {
+          "mainUtiLitiesId": "wifi",
+          "title": "WiFi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833833458-7b6ab67bc5df6ef9f2caee150aae1f43.png"
+        }
+      ],
+      "rooms": [
+        {
+          "createdAt": "2023-07-28T08:23:48.570Z",
+          "img": "https://loremflickr.com/640/40/city",
+          "roomName": "Standard  MLH1",
+          "roomType": "Standard",
+          "price": "142.15",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 3,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV"
+          ],
+          "roomId": "MLH1"
+        },
+        {
+          "createdAt": "2023-07-29T03:23:14.193Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/435.jpg",
+          "roomName": "Deluxe MLH2",
+          "roomType": "Deluxe",
+          "price": "229.00",
+          "numOfBed": 2,
+          "numOfCustomer": 4,
+          "quantity": 2,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "MLH2"
+        }
+      ],
+      "hotelId": 1
+    },
+    {
+      "createdAt": "2023-07-28T17:34:20.717Z",
+      "hotelName": "Yarra Ocean Suites",
+      "price": "189.99",
+      "img": "https://loremflickr.com/640/480/city",
+      "city": "Hà Nội",
+      "district": "Tây Hồ",
+      "street": "Âu Cơ",
+      "buildingNumber": "79",
+      "rating": 8.3,
+      "description": "For you, travelers who wish to travel comfortably on a budget, Daun Bali Seminyak Hotel is the perfect place to stay that provides decent facilities as well as great services. From business event to corporate gathering, Daun Bali Seminyak Hotel provides complete services and facilities that you and your colleagues need. Have fun with various entertaining facilities for you and the whole family at Daun Bali Seminyak Hotel, a wonderful accommodation for your family holiday.",
+      "mainUtiLities": [
+        {
+          "mainUtiLitiesId": "ariconditional",
+          "title": "Máy lạnh",
+          "mainUtiLitiesImg": "https://cdn-icons-png.flaticon.com/512/4274/4274364.png"
+        },
+        {
+          "mainUtiLitiesId": "resturant",
+          "title": "Nhà hàng",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833794378-eb51eee62d46110b712e327108299ea6.png"
+        },
+        {
+          "mainUtiLitiesId": "24hreception",
+          "title": "Lễ tân 24h",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833738654-d8acba985778fc0cc5dd1d56d6cf48c5.png"
+        },
+        {
+          "mainUtiLitiesId": "parking",
+          "title": "Chỗ đậu xe",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833756238-56e24fb64a964d38b8f393bf093a77a9.png"
+        },
+        {
+          "mainUtiLitiesId": "elevator",
+          "title": "Thang máy",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833714411-48c9b7565018d02dc32837738df1c917.png"
+        },
+        {
+          "mainUtiLitiesId": "wifi",
+          "title": "WiFi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833833458-7b6ab67bc5df6ef9f2caee150aae1f43.png"
+        }
+      ],
+      "rooms": [
+        {
+          "createdAt": "2023-07-28T17:34:20.717Z",
+          "img": "https://loremflickr.com/640/80/city",
+          "roomName": "Deluxe YOS1",
+          "roomType": "Deluxe",
+          "price": "189.99",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 2,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "YOS1"
+        },
+        {
+          "createdAt": "2023-07-28T18:34:40.027Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1135.jpg",
+          "roomName": "Suite YOS2",
+          "roomType": "Suite",
+          "price": "251.89",
+          "numOfBed": 3,
+          "numOfCustomer": 6,
+          "quantity": 1,
+          "service": [
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "YOS2"
+        }
+      ],
+      "hotelId": 2
+    },
+    {
+      "createdAt": "2023-07-28T15:29:31.815Z",
+      "hotelName": "Pavilion Hotel",
+      "price": "98.98",
+      "img": "https://loremflickr.com/640/480/city",
+      "city": "Hạ Long",
+      "district": "Bãi Cháy",
+      "street": "Khu 1",
+      "buildingNumber": "56",
+      "rating": 7.2,
+      "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+      "mainUtiLities": [
+        {
+          "mainUtiLitiesId": "ariconditional",
+          "title": "Máy lạnh",
+          "mainUtiLitiesImg": "https://cdn-icons-png.flaticon.com/512/4274/4274364.png"
+        },
+        {
+          "mainUtiLitiesId": "resturant",
+          "title": "Nhà hàng",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833794378-eb51eee62d46110b712e327108299ea6.png"
+        },
+        {
+          "mainUtiLitiesId": "24hreception",
+          "title": "Lễ tân 24h",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833738654-d8acba985778fc0cc5dd1d56d6cf48c5.png"
+        },
+        {
+          "mainUtiLitiesId": "elevator",
+          "title": "Thang máy",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833714411-48c9b7565018d02dc32837738df1c917.png"
+        },
+        {
+          "mainUtiLitiesId": "wifi",
+          "title": "WiFi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833833458-7b6ab67bc5df6ef9f2caee150aae1f43.png"
+        }
+      ],
+      "rooms": [
+        {
+          "createdAt": "2023-07-28T19:30:53.268Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/601.jpg",
+          "roomName": "Standard PH1",
+          "roomType": "Standard",
+          "price": "98.98",
+          "numOfBed": 2,
+          "numOfCustomer": 4,
+          "quantity": 3,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "PH1"
+        },
+        {
+          "createdAt": "2023-07-28T12:45:23.567Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/80.jpg",
+          "roomName": "Superior PH2",
+          "roomType": "Superior",
+          "price": "119.00",
+          "numOfBed": 2,
+          "numOfCustomer": 4,
+          "quantity": 3,
+          "service": [
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "PH2"
+        }
+      ],
+      "hotelId": 3
+    },
+    {
+      "createdAt": "2023-07-28T11:55:56.657Z",
+      "hotelName": "Muong Thanh Hotel",
+      "price": "199.55",
+      "img": "https://loremflickr.com/640/480/city",
+      "city": "Hạ Long",
+      "district": "Bãi Cháy",
+      "street": "Khu 2",
+      "buildingNumber": "722",
+      "rating": 9.3,
+      "description": "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+      "mainUtiLities": [
+        {
+          "mainUtiLitiesId": "ariconditional",
+          "title": "Máy lạnh",
+          "mainUtiLitiesImg": "https://cdn-icons-png.flaticon.com/512/4274/4274364.png"
+        },
+        {
+          "mainUtiLitiesId": "resturant",
+          "title": "Nhà hàng",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833794378-eb51eee62d46110b712e327108299ea6.png"
+        },
+        {
+          "mainUtiLitiesId": "pool",
+          "title": "Hồ bơi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833772013-929572dff57d1755878aa79dc46e6be5.png"
+        },
+        {
+          "mainUtiLitiesId": "24hreception",
+          "title": "Lễ tân 24h",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833738654-d8acba985778fc0cc5dd1d56d6cf48c5.png"
+        },
+        {
+          "mainUtiLitiesId": "parking",
+          "title": "Chỗ đậu xe",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833756238-56e24fb64a964d38b8f393bf093a77a9.png"
+        },
+        {
+          "mainUtiLitiesId": "elevator",
+          "title": "Thang máy",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833714411-48c9b7565018d02dc32837738df1c917.png"
+        },
+        {
+          "mainUtiLitiesId": "wifi",
+          "title": "WiFi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833833458-7b6ab67bc5df6ef9f2caee150aae1f43.png"
+        }
+      ],
+      "rooms": [
+        {
+          "createdAt": "2023-07-29T01:29:40.487Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/435.jpg",
+          "roomName": "Superior MTH1",
+          "roomType": "Superior",
+          "price": "199.55",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 5,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "MTH1"
+        },
+        {
+          "createdAt": "2023-07-28T23:02:41.790Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/990.jpg",
+          "roomName": "Deluxe MTH2",
+          "roomType": "Deluxe",
+          "price": "204.55",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 3,
+          "service": [
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "MTH2"
+        },
+        {
+          "createdAt": "2023-07-28T08:40:06.138Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/282.jpg",
+          "roomName": "Deluxe MTH3",
+          "roomType": "Deluxe",
+          "price": "237.99",
+          "numOfBed": 2,
+          "numOfCustomer": 4,
+          "quantity": 2,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "MTH3"
+        },
+        {
+          "createdAt": "2023-07-28T22:32:27.119Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/955.jpg",
+          "roomName": "Suite MTH4",
+          "roomType": "Suite",
+          "price": "336.00",
+          "numOfBed": 2,
+          "numOfCustomer": 4,
+          "quantity": 5,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "MTH4"
+        },
+        {
+          "createdAt": "2023-07-28T22:32:27.119Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/955.jpg",
+          "roomName": "Luxury MTH5",
+          "roomType": "Luxury",
+          "price": "456.88",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 5,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "MTH5"
+        }
+      ],
+      "hotelId": 4
+    },
+    {
+      "createdAt": "2023-07-28T19:07:32.022Z",
+      "hotelName": "King and Sons Hotel",
+      "price": "66.00",
+      "img": "https://loremflickr.com/640/480/city",
+      "city": "Đà Nắng",
+      "district": "Ngũ Hành Sơn",
+      "street": "Đỗ Bí, Mỹ An",
+      "buildingNumber": "683",
+      "rating": 7.1,
+      "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+      "mainUtiLities": [
+        {
+          "mainUtiLitiesId": "ariconditional",
+          "title": "Máy lạnh",
+          "mainUtiLitiesImg": "https://cdn-icons-png.flaticon.com/512/4274/4274364.png"
+        },
+        {
+          "mainUtiLitiesId": "parking",
+          "title": "Chỗ đậu xe",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833756238-56e24fb64a964d38b8f393bf093a77a9.png"
+        },
+        {
+          "mainUtiLitiesId": "elevator",
+          "title": "Thang máy",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833714411-48c9b7565018d02dc32837738df1c917.png"
+        },
+        {
+          "mainUtiLitiesId": "wifi",
+          "title": "WiFi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833833458-7b6ab67bc5df6ef9f2caee150aae1f43.png"
+        }
+      ],
+      "rooms": [
+        {
+          "createdAt": "2023-07-28T17:23:33.614Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/88.jpg",
+          "roomName": "Standard KSH1",
+          "roomType": "Standard",
+          "price": "66.00",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 3,
+          "service": [
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "KSH1"
+        },
+        {
+          "createdAt": "2023-07-28T09:26:43.365Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/612.jpg",
+          "roomName": "Superior KSH2",
+          "roomType": "Superior",
+          "price": "82.05",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 4,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "KSH2"
+        }
+      ],
+      "hotelId": 5
+    },
+    {
+      "createdAt": "2023-07-28T16:22:47.853Z",
+      "hotelName": "Shields Hotel",
+      "price": "80.00",
+      "img": "https://loremflickr.com/640/480/city",
+      "city": "Hạ Long",
+      "district": "Hòn Gai",
+      "street": "Bãi 2",
+      "buildingNumber": "6",
+      "rating": 7.5,
+      "description": "The Nagasaki Lander is the trademarked name of several series of Nagasaki sport bikes, that started with the 1984 ABC800J",
+      "mainUtiLities": [
+        {
+          "mainUtiLitiesId": "ariconditional",
+          "title": "Máy lạnh",
+          "mainUtiLitiesImg": "https://cdn-icons-png.flaticon.com/512/4274/4274364.png"
+        },
+        {
+          "mainUtiLitiesId": "24hreception",
+          "title": "Lễ tân 24h",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833738654-d8acba985778fc0cc5dd1d56d6cf48c5.png"
+        },
+        {
+          "mainUtiLitiesId": "elevator",
+          "title": "Thang máy",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833714411-48c9b7565018d02dc32837738df1c917.png"
+        },
+        {
+          "mainUtiLitiesId": "wifi",
+          "title": "WiFi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833833458-7b6ab67bc5df6ef9f2caee150aae1f43.png"
+        }
+      ],
+      "rooms": [
+        {
+          "createdAt": "2023-07-28T07:43:41.999Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/259.jpg",
+          "roomName": "Superior SH1",
+          "roomType": "Superior",
+          "price": "80.00",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 5,
+          "service": [
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "SH1"
+        },
+        {
+          "createdAt": "2023-07-28T21:34:13.705Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1083.jpg",
+          "roomName": "Superior SH2",
+          "roomType": "Superior",
+          "price": "95.60",
+          "numOfBed": 2,
+          "numOfCustomer": 4,
+          "quantity": 2,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "SH2"
+        }
+      ],
+      "hotelId": 6
+    },
+    {
+      "createdAt": "2023-07-28T08:54:37.330Z",
+      "hotelName": "Dolphin Hotel and Apartment",
+      "price": "100.85",
+      "img": "https://loremflickr.com/640/480/city",
+      "city": "Đà Nẵng",
+      "district": "Sơn Trà",
+      "street": "Nguyễn Văn Thoại",
+      "buildingNumber": "99",
+      "rating": 7.8,
+      "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+      "mainUtiLities": [
+        {
+          "mainUtiLitiesId": "ariconditional",
+          "title": "Máy lạnh",
+          "mainUtiLitiesImg": "https://cdn-icons-png.flaticon.com/512/4274/4274364.png"
+        },
+        {
+          "mainUtiLitiesId": "24hreception",
+          "title": "Lễ tân 24h",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833738654-d8acba985778fc0cc5dd1d56d6cf48c5.png"
+        },
+        {
+          "mainUtiLitiesId": "parking",
+          "title": "Chỗ đậu xe",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833756238-56e24fb64a964d38b8f393bf093a77a9.png"
+        },
+        {
+          "mainUtiLitiesId": "elevator",
+          "title": "Thang máy",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833714411-48c9b7565018d02dc32837738df1c917.png"
+        },
+        {
+          "mainUtiLitiesId": "wifi",
+          "title": "WiFi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833833458-7b6ab67bc5df6ef9f2caee150aae1f43.png"
+        }
+      ],
+      "rooms": [
+        {
+          "createdAt": "2023-07-28T17:58:58.489Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/809.jpg",
+          "roomName": "Superior DHA1",
+          "roomType": "Superior",
+          "price": "100.85",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 4,
+          "service": [
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "DHA1"
+        },
+        {
+          "createdAt": "2023-07-28T11:22:30.386Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/64.jpg",
+          "roomName": "Deluxe DHA2",
+          "roomType": "Deluxe",
+          "price": "172.25",
+          "numOfBed": 2,
+          "numOfCustomer": 4,
+          "quantity": 2,
+          "service": [
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "DHA2"
+        }
+      ],
+      "hotelId": 7
+    },
+    {
+      "createdAt": "2023-07-28T15:12:12.241Z",
+      "hotelName": "Monahan Hotel",
+      "price": "110.15",
+      "img": "https://loremflickr.com/640/480/city",
+      "city": "Sapa",
+      "district": "Trung Tâm Sapa",
+      "street": "Vườn Treo",
+      "buildingNumber": "27",
+      "rating": 8.7,
+      "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+      "mainUtiLities": [
+        {
+          "mainUtiLitiesId": "ariconditional",
+          "title": "Máy lạnh",
+          "mainUtiLitiesImg": "https://cdn-icons-png.flaticon.com/512/4274/4274364.png"
+        },
+        {
+          "mainUtiLitiesId": "resturant",
+          "title": "Nhà hàng",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833794378-eb51eee62d46110b712e327108299ea6.png"
+        },
+        {
+          "mainUtiLitiesId": "pool",
+          "title": "Hồ bơi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833772013-929572dff57d1755878aa79dc46e6be5.png"
+        },
+        {
+          "mainUtiLitiesId": "24hreception",
+          "title": "Lễ tân 24h",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833738654-d8acba985778fc0cc5dd1d56d6cf48c5.png"
+        },
+        {
+          "mainUtiLitiesId": "parking",
+          "title": "Chỗ đậu xe",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833756238-56e24fb64a964d38b8f393bf093a77a9.png"
+        },
+        {
+          "mainUtiLitiesId": "elevator",
+          "title": "Thang máy",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833714411-48c9b7565018d02dc32837738df1c917.png"
+        },
+        {
+          "mainUtiLitiesId": "wifi",
+          "title": "WiFi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833833458-7b6ab67bc5df6ef9f2caee150aae1f43.png"
+        }
+      ],
+      "rooms": [
+        {
+          "createdAt": "2023-07-28T21:18:43.157Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/373.jpg",
+          "roomName": "Standard MH1",
+          "roomType": "Standard",
+          "price": "110.15",
+          "numOfBed": 2,
+          "numOfCustomer": 4,
+          "quantity": 4,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "MH1"
+        },
+        {
+          "createdAt": "2023-07-28T12:23:36.442Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/558.jpg",
+          "roomName": "Deluxe MH2",
+          "roomType": "Deluxe",
+          "price": "246.00",
+          "numOfBed": 2,
+          "numOfCustomer": 4,
+          "quantity": 3,
+          "service": [
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "MH2"
+        },
+        {
+          "createdAt": "2023-07-29T02:33:59.724Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/295.jpg",
+          "roomName": "Deluxe MH3",
+          "roomType": "Deluxe",
+          "price": "275.15",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 3,
+          "service": [
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "MH3"
+        },
+        {
+          "createdAt": "2023-07-28T13:34:59.918Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/515.jpg",
+          "roomName": "Suite MH4",
+          "roomType": "Suite",
+          "price": "299.88",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 6,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "MH4"
+        }
+      ],
+      "hotelId": 8
+    },
+    {
+      "createdAt": "2023-07-28T23:39:34.110Z",
+      "hotelName": "Schoen LLC Apartment",
+      "price": "189.99",
+      "img": "https://loremflickr.com/640/480/city",
+      "city": "Sapa",
+      "district": "Trung Tâm Sapa",
+      "street": "Đường N1",
+      "buildingNumber": "28",
+      "rating": 8.9,
+      "description": "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit",
+      "mainUtiLities": [
+        {
+          "mainUtiLitiesId": "ariconditional",
+          "title": "Máy lạnh",
+          "mainUtiLitiesImg": "https://cdn-icons-png.flaticon.com/512/4274/4274364.png"
+        },
+        {
+          "mainUtiLitiesId": "resturant",
+          "title": "Nhà hàng",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833794378-eb51eee62d46110b712e327108299ea6.png"
+        },
+        {
+          "mainUtiLitiesId": "pool",
+          "title": "Hồ bơi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833772013-929572dff57d1755878aa79dc46e6be5.png"
+        },
+        {
+          "mainUtiLitiesId": "parking",
+          "title": "Chỗ đậu xe",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833756238-56e24fb64a964d38b8f393bf093a77a9.png"
+        },
+        {
+          "mainUtiLitiesId": "elevator",
+          "title": "Thang máy",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833714411-48c9b7565018d02dc32837738df1c917.png"
+        },
+        {
+          "mainUtiLitiesId": "wifi",
+          "title": "WiFi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833833458-7b6ab67bc5df6ef9f2caee150aae1f43.png"
+        }
+      ],
+      "rooms": [
+        {
+          "createdAt": "2023-07-28T15:24:01.651Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/187.jpg",
+          "roomName": "Superior SLA1",
+          "roomType": "Superior",
+          "price": "189.99",
+          "numOfBed": 2,
+          "numOfCustomer": 4,
+          "quantity": 6,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "SLA1"
+        },
+        {
+          "createdAt": "2023-07-28T14:14:08.395Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/640.jpg",
+          "roomName": "Suite SLA2",
+          "roomType": "Suite",
+          "price": "254.00",
+          "numOfBed": 2,
+          "numOfCustomer": 4,
+          "quantity": 4,
+          "service": [
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "SLA2"
+        }
+      ],
+      "hotelId": 9
+    },
+    {
+      "createdAt": "2023-07-28T20:48:00.816Z",
+      "hotelName": "Cartwright & Zemlak Hotel",
+      "price": "103.55",
+      "img": "https://loremflickr.com/640/480/city",
+      "city": "Đà Lạt",
+      "district": "Phường 1",
+      "street": "Nam Kỳ Khởi Nghĩa",
+      "buildingNumber": "147",
+      "rating": 6.5,
+      "description": "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+      "mainUtiLities": [
+        {
+          "mainUtiLitiesId": "ariconditional",
+          "title": "Máy lạnh",
+          "mainUtiLitiesImg": "https://cdn-icons-png.flaticon.com/512/4274/4274364.png"
+        },
+        {
+          "mainUtiLitiesId": "elevator",
+          "title": "Thang máy",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833714411-48c9b7565018d02dc32837738df1c917.png"
+        },
+        {
+          "mainUtiLitiesId": "wifi",
+          "title": "WiFi",
+          "mainUtiLitiesImg": "https://s3-ap-southeast-1.amazonaws.com/cntres-assets-ap-southeast-1-250226768838-cf675839782fd369/imageResource/2017/06/07/1496833833458-7b6ab67bc5df6ef9f2caee150aae1f43.png"
+        }
+      ],
+      "rooms": [
+        {
+          "createdAt": "2023-07-29T01:54:10.671Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/881.jpg",
+          "roomName": "Standard CZH1",
+          "roomType": "Standard",
+          "price": "103.55",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 7,
+          "service": [
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "CZH1"
+        },
+        {
+          "createdAt": "2023-07-28T13:26:53.344Z",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/829.jpg",
+          "roomName": "Superior CZH2",
+          "roomType": "Superior",
+          "price": "121.25",
+          "numOfBed": 1,
+          "numOfCustomer": 2,
+          "quantity": 5,
+          "service": [
+            "Miễn phí hủy phòng",
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "CZH2"
+        },
+        {
+          "createdAt": "2023-07-28T06:59:15.382Z",
+          "hotelName": "Cartwright & Zemlak Hotel",
+          "img": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/270.jpg",
+          "roomName": "Deluxe CZH3",
+          "roomType": "Deluxe",
+          "price": "246.00",
+          "numOfBed": 2,
+          "numOfCustomer": 4,
+          "quantity": 8,
+          "service": [
+            "Tủ lạnh",
+            "Máy lạnh",
+            "Nước nóng",
+            "Nước đóng chai miễn phí",
+            "TV",
+            "Bàn làm việc",
+            "Máy sấy tóc",
+            "Áo choàng tắm/ Khăn tắm"
+          ],
+          "roomId": "CZH3"
+        }
+      ],
+      "hotelId": 10
+    }
+  ];
+
+  const param = useParams();
+  const [hotelDetail, setHotelDetail] = useState([]);
+
+  useEffect(() => {
+    const getHotelDetail = async () => {
+      setHotelDetail(mockDataHotel.find(hotel => hotel.hotelId = param.hotelId));
+    };
+    getHotelDetail();
+  }, [param.hotelId]);
+
+
+
   return (
-    <>
-      <section
-        style={{
-          width: "100%",
-          height: "auto",
-          paddingTop: "85px",
-        }}
-      >
-        <div className="container booking">
-          <div style={{ margin: "48px 0 16px 0" }}>
-            <h1
-              aria-level="1"
-              dir="auto"
-              role="heading"
-              style={{ fontSize: "24px", color: "rgb(3, 18, 26)" }}
-            >
-              Hotel Booking
-            </h1>
-          </div>
-          <div style={{ paddingBottom: "32px" }}>
-            <h3 style={{ fontSize: "16px", color: "rgb(104, 113, 118)" }}>
-              Make sure all the details on this page are correct before
-              proceeding to payment.
-            </h3>
-          </div>
-          <div
-            className="row container"
-            style={{
-              margin: "0",
-            }}
-          >
-            <div className="col-12 col-lg-8 p-0" style={{ height: "100%" }}>
-              <div
-                className="user row rounded border mb-5"
-                style={{ height: "76px" }}
-              >
-                <div className="col-12 d-flex align-items-center justify-content-start gap-2">
-                  <img
-                    className="rounded-circle"
-                    src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/1/10e771009e605099270565bf161c5ac4.svg"
-                    alt=""
-                    style={{ background: "rgb(1, 148, 243)" }}
-                  />
-                  <div>
-                    <h3>Logged in as {currentUser.name}</h3>
-                    <p>{currentUser.name} (Google)</p>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="information mb-3">Your Information</div>
-              </div>
-              <div
-                className="rounded border p-3 mb-5"
-                style={{
-                  boxShadow: "rgba(3, 18, 26, 0.2) 0px 1px 2px",
-                }}
-              >
-                <div className="form row">
-                  <div className="col-12 col-md-6 mb-3">
-                    <label className="form-label">Contact's name</label>
-                    <input type="text" className="form-control rounded" />
-                    <div className="form-text">
-                      <span>
-                        As in Passport/Official ID Card (without title/special
-                        characters)
-                      </span>
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 mb-3">
-                    <label className="form-label">
-                      Reachable mobile number
-                    </label>
-                    <input type="text" className="form-control rounded" />
-                    <div className="form-text">
-                      <span>Your number</span>
-                    </div>
-                  </div>
-                  <div className="col-12 col-md-6 mb-3">
-                    <label className="form-label">
-                      Contact's email address
-                    </label>
-                    <input type="email" className="form-control rounded" />
-                    <div className="form-text">
-                      <span>e.g.: email@example.com</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="mb-3">
-                <span className="details">Price details</span>
-              </div>
-              <div
-                className="rounded border mb-5"
-                style={{ boxShadow: "rgba(3, 18, 26, 0.2) 0px 1px 2px" }}
-              >
-                <div className="total row p-3 mb-3">
-                  <div className="col-8 m-0">
-                    <span>Total</span>
-                  </div>
-                  <div className="col-4 text-end">
-                    <span>498.750 VND</span>
-                  </div>
-                </div>
-                <div className="text d-flex gap-2 mb-3 border-bottom">
-                  <img
-                    src="https://ik.imagekit.io/tvlk/image/imageResource/2022/09/13/1663036323265-71c4f62650fd2a96cda8cd045e2ab935.webp?tr=h-24,q-75"
-                    alt=""
-                  />
-                  <span className="">
-                    Taxes and fees, are recovery charges which Home Stays pays
-                    to the property. If you have any questions regarding tax and
-                    invoice, please refer to Home Stays Terms and Condition
-                  </span>
-                </div>
-                <div className="total-body">
-                  <div className="row p-3">
-                    <div className="col-8 m-0">
-                      <span>(1x) Superior Double Room (1 Night)</span>
-                    </div>
-                    <div className="col-4 text-end">
-                      <span>439.815 VND</span>
-                    </div>
-                  </div>
-                  <div className="row p-3">
-                    <div className="col-8 m-0">
-                      <span>Taxes and fees</span>
-                    </div>
-                    <div className="col-4 text-end">
-                      <span>58.935 VND</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="row mb-5">
-                <div className="col-12 col-sm-8 pb-sm-0 pb-4">
-                  <span
-                    className="text-start"
-                    style={{
-                      fontSize: "14px",
-                      color: "rgb(3, 18, 26)",
-                      lineHeight: "20px",
-                      fontWeight: "500",
-                    }}
-                  >
-                    By clicking this button, you acknowledge that you have read
-                    and agreed to the Terms & Conditions and Privacy Policy of
-                    Home Stays
-                  </span>
-                </div>
-                <div className="col-12 col-sm-4 text-center text-sm-end">
-                  <button
-                    className="button-review text-center rounded"
-                    type="submit"
-                  >
-                    Continue to Review
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="d-none d-lg-block col-4">
-              <div
-                className="rounded border ms-4 p-3"
-                style={{
-                  height: "initial",
-                  boxShadow: "rgba(3, 18, 26, 0.2) 0px 1px 2px",
-                }}
-              >
-                <div
-                  className="d-flex align-items-center justify-content-center gap-2"
-                  style={{ padding: "16px", borderBottom: "1px solid black" }}
-                >
-                  <img
-                    src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/6/6aa2fd01a9460e1a71bb0efb713f0212.svg"
-                    style={{ width: "24px", height: "24px" }}
-                  />
-                  <h3
-                    style={{
-                      color: "color: rgb(3, 18, 26)",
-                      fontSize: "16px",
-                      margin: 0,
-                    }}
-                  >
-                    Hanoi De Maison Grand Hotel
-                  </h3>
-                </div>
-                <div style={{ margin: "16px" }}>
-                  <div className="mb-3">
-                    <h3
-                      style={{
-                        color: "color: rgb(3, 18, 26)",
-                        fontSize: "16px",
-                        margin: 0,
-                      }}
-                    >
-                      (1x) Superior Double Room
-                    </h3>
-                  </div>
-                  <div className="d-flex row mb-1">
-                    <div
-                      className="col-5"
-                      style={{ color: "rgb(104, 113, 118)", fontSize: "14px" }}
-                    >
-                      Guests per room
-                    </div>
-                    <div
-                      className="col-5"
-                      style={{ color: "rgb(3, 18, 26)", fontSize: "14px" }}
-                    >
-                      2 Guests
-                    </div>
-                  </div>
-                  <div className="d-flex row mb-1">
-                    <div
-                      className="col-5"
-                      style={{ color: "rgb(104, 113, 118)", fontSize: "14px" }}
-                    >
-                      Bed Type
-                    </div>
-                    <div
-                      className="col-5"
-                      style={{ color: "rgb(3, 18, 26)", fontSize: "14px" }}
-                    >
-                      1 double bed
-                    </div>
-                  </div>
-                  <div className="row" style={{ margin: "12px 0" }}>
-                    <div className="col-5 p-0">
-                      <img
-                        className="rounded"
-                        src="https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10030146-7b73df32d42f8afd54bc6a98fadaaa50.jpeg?_src=imagekit&tr=h-80,q-40,w-80"
-                        alt=""
-                        style={{ width: "80px", height: "80px" }}
-                      />
-                    </div>
-                    <div className="col-7">
-                      <div
-                        className="d-flex align-items-center justify-content-start gap-2 mb-2"
-                        style={{ color: "rgb(104, 113, 118)" }}
-                      >
-                        <img
-                          src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/8/812d6f19a9d1ceb30728acbce11f709a.svg"
-                          alt=""
-                          style={{ width: "16px", height: " 16px" }}
-                        />
-                        <h3 className="m-0" style={{ fontSize: "14px" }}>
-                          Without Breakfast
-                        </h3>
-                      </div>
-                      <div
-                        className="d-flex align-items-center justify-content-start gap-2 mb-2"
-                        style={{ color: "rgb(0, 135, 90)" }}
-                      >
-                        <img
-                          src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/0/01cf1090e2f434a7d63f1cbca912ef44.svg"
-                          alt=""
-                          style={{ width: "16px", height: " 16px" }}
-                        />
-                        <h3 className="m-0" style={{ fontSize: "14px" }}>
-                          Free WiFi
-                        </h3>
-                      </div>
-                    </div>
-                  </div>
-                  <hr className="m-0" />
-                  <div style={{ margin: "12px 0" }}>
-                    <div className="d-flex align-items-center justify-content-start gap-2 mb-2">
-                      <img
-                        src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/e/e262dbf2650e163a4d9b31627c14987e.svg"
-                        alt=""
-                        style={{ width: "16px", height: " 16px" }}
-                      />
-                      <h3
-                        className="m-0"
-                        style={{
-                          color: "rgb(104, 113, 118)",
-                          fontSize: "14px",
-                        }}
-                      >
-                        Free Cancellation
-                      </h3>
-                    </div>
-                    <div className="d-flex align-items-center justify-content-start gap-2 mb-2">
-                      <img
-                        src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/2/206164fab54a16c46f0352ca0e22cb45.svg"
-                        alt=""
-                        style={{ width: "16px", height: " 16px" }}
-                      />
-                      <h3
-                        className="m-0"
-                        style={{
-                          color: "rgb(104, 113, 118)",
-                          fontSize: "14px",
-                        }}
-                      >
-                        Reschedulable
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    <HotelBooking
+      hotelDetail={hotelDetail}
+    />
   );
 };
 

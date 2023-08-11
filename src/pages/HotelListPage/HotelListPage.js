@@ -123,7 +123,6 @@ const HotelListPage = () => {
                                 return (
                                     <HotelItem
                                         id={hotelItem.hotelId}
-                                        // onClick={() => handleAddToCart(hotelItem)}
                                         hotelName={hotelItem.hotelName}
                                         img={hotelItem.img}
                                         rating={hotelItem.rating}

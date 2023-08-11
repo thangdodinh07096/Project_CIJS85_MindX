@@ -18,9 +18,9 @@ const HotelItem = ({ id, hotelName, img, price, rating, city, district, street, 
                         <h5 className='address' style={{ fontWeight: "550" }}>
                             <i class="fas fa-map-marker-alt" style={{ color: "#4d67ce" }}></i> {buildingNumber}, {street}, {district}, {city}
                         </h5>
-                        <div className='row pt-3'>
-                            <h4 style={{ fontWeight: "650", paddingTop: "10px" }}>Hotel Services</h4>
-                            <div className='col-xl-9 col-lg-10 col-md-12 col-sm-10 row'>
+                        <div className='row'>
+                            <h5 style={{ fontWeight: "650", paddingTop: "10px" }}>Hotel Services</h5>
+                            <div className='col-xl-8 col-lg-11 col-md-12 col-sm-10 row'>
                                 {
                                     mainUtiLities.map((mainUtiLitiesItem) => {
                                         return (
@@ -36,15 +36,17 @@ const HotelItem = ({ id, hotelName, img, price, rating, city, district, street, 
                                     })
                                 }
                             </div>
+                            <hr />
                             <div className="text-end">
-                                <h3 style={{ fontWeight: "550" }}>Price: <span className="room-price">{price} $</span></h3>
+                                <h3 className="room-price" style={{ fontWeight: "550" }}>US$ {price}</h3>
                             </div>
                         </div>
 
                     </div>
                 </div>
             </div >
-        </div >)
+        </div >
+    )
 }
 
 export default HotelItem

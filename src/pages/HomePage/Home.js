@@ -11,25 +11,16 @@ const Home = () => {
             <h3>PERFECT FOR ANY TRIP</h3>
           </div>
           <form className="row g-3">
-            <div className="col-lg-4 col-md-5 col-sm-12">
+            <div className="col-lg-8 col-md-9 col-sm-9">
               <input
-                type="date"
+                type="string"
                 className="form-control"
-                id="day-in"
-                name="day-in"
-                placeholder="Check In"
+                id="search"
+                name="search"
+                placeholder="Search hotels"
               />
             </div>
-            <div className="col-lg-4 col-md-5 col-sm-12">
-              <input
-                type="date"
-                className="form-control"
-                id="day-out"
-                name="day-out"
-                placeholder="Check out"
-              />
-            </div>
-            <div className="col-lg-2 col-md-2 col-sm-12">
+            <div className="col-lg-2 col-md-3 col-sm-3">
               <input
                 type="number"
                 className="form-control"
@@ -38,7 +29,7 @@ const Home = () => {
               />
             </div>
             <div className="col-lg-2 col-md-12 col-sm-12">
-              <button type="submit" className="btn btn-add-to-card">
+              <button type="submit" className="btn btn-web">
                 BOOK NOW
               </button>
             </div>
@@ -91,12 +82,90 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div id="section-our-rooms">
+      {/* <div id="section-our-rooms">
         <div className="container">
           <h1 className="my-title">
             <span style={{ fontStyle: "italic", fontWeight: 500 }}>Our</span>{" "}
             Rooms
           </h1>
+
+          <div className="container text-center my-3">
+            <h2 className="font-weight-light">Bootstrap 4 - Multi Item Carousel</h2>
+            <div className="row mx-auto my-auto">
+              <div id="recipeCarousel" className="carousel slide w-100" data-ride="carousel">
+                <div className="carousel-inner w-100" role="listbox">
+                  <div className="carousel-item active">
+                    <div className="col-md-4">
+                      <div className="card card-body">
+                        <img className="img-fluid" src="http://placehold.it/380?text=1" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="carousel-item">
+                    <div className="col-md-4">
+                      <div className="card h-100">
+                        <img
+                          src="./Image/room01.jpg"
+                          className="card-img-top"
+                          alt="..."
+                        />
+                        <div className="card-body">
+                          <div className="card-title item-header">
+                            <h1 className="hotel-name">Single Room</h1>
+                          </div>
+                          <div className="room-price pricePerNight">
+                            45${" "}
+                            <span style={{ fontSize: 15, color: "black" }}>
+                              per night
+                            </span>
+                          </div>
+                          <p className="card-text">1-2 Guests</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="carousel-item">
+                    <div className="col-md-4">
+                      <div className="card card-body">
+                        <img className="img-fluid" src="http://placehold.it/380?text=3" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="carousel-item">
+                    <div className="col-md-4">
+                      <div className="card card-body">
+                        <img className="img-fluid" src="http://placehold.it/380?text=4" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="carousel-item">
+                    <div className="col-md-4">
+                      <div className="card card-body">
+                        <img className="img-fluid" src="http://placehold.it/380?text=5" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="carousel-item">
+                    <div className="col-md-4">
+                      <div className="card card-body">
+                        <img className="img-fluid" src="http://placehold.it/380?text=6" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a className="carousel-control-prev w-auto" href="#recipeCarousel" role="button" data-slide="prev">
+                  <span className="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true" />
+                  <span className="sr-only">Previous</span>
+                </a>
+                <a className="carousel-control-next w-auto" href="#recipeCarousel" role="button" data-slide="next">
+                  <span className="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true" />
+                  <span className="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            <h5 className="mt-2">Advances one slide at a time</h5>
+          </div>
+
           <div className="row row-cols-1 row-cols-md-3 g-4">
             <div className="col">
               <div className="card h-100">
@@ -164,13 +233,13 @@ const Home = () => {
           </div>
           <div className="row justify-content-center">
             <div className="col-lg-4 col-md-6 col-sm-12 text-center">
-              <a type href="./rooms.html" className="btn btn-add-to-card">
+              <a type href="./rooms.html" className="btn btn-web">
                 VIEW ALL ROOM
               </a>
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div id="service" style={{ backgroundColor: "#f5f6fa" }}>
         <div className="container">
           <h1 className="my-title">
@@ -236,7 +305,7 @@ const Home = () => {
               holiday.
             </p>
             <div className="col-lg-4 col-md-6 col-sm-12 text-center">
-              <a type="submit" className="btn btn-add-to-card">
+              <a type="submit" className="btn btn-web">
                 READ MORE
               </a>
             </div>

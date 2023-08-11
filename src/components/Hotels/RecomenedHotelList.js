@@ -40,8 +40,8 @@ const RecomenedHotelList = (props) => {
                                             {hotelItemRecomend.rating}/10
                                         </div>
                                     </div>
-                                    <div className="col-5 room-price pricePerNight text-end" style={{ fontSize: "25px", padding: "0 10px 0 0" }}>
-                                        {hotelItemRecomend.price} $
+                                    <div className="col-5 room-price pricePerNight text-end" style={{ fontSize: "20px", padding: "0 10px 0 0" }}>
+                                        US$ {hotelItemRecomend.price}
                                     </div>
                                 </div>
                             </div>

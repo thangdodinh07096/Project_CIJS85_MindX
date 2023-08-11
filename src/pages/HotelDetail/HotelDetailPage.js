@@ -22,8 +22,6 @@ const HotelDetailPage = () => {
             });
     }, [param.hotelId]);
 
-    // useEffect(() => setHotelMainUtilities(hotelDetail.mainUtiLities))
-    // console.log([hotelDetail])
     return (
         <div style={{ backgroundColor: "rgb(245 246 250)" }}>
             <div className="hotel-detail-custom d-flex flex-column justify-content-center align-items-start text-light ps-4"
@@ -75,8 +73,8 @@ const HotelDetailPage = () => {
                         </div>
                     </div>
                     <div className='col-2'>
-                        <div className='text-end'>Price per night from:</div>
-                        <h5 className="room-price-detail text-end">{hotelDetail.price} $</h5>
+                        <div className='text-end'>Price/room/night from:</div>
+                        <h5 className="room-price-detail text-end">US ${hotelDetail.price}</h5>
                         <div className="d-flex justify-content-end">
                             <Button className='btn-booking-room mr-xs btn-hotels' onClick={() => setShowRooms(true)}>
                                 Booking room
@@ -91,12 +89,15 @@ const HotelDetailPage = () => {
                     >
                         <Modal.Header closeButton>
                             <Modal.Title id="modal-title-rooms" style={{ fontWeight: "600", fontSize: "25px" }}>
-                                {hotelDetail.hotelName} ROOMS
+                                {hotelDetail.hotelName} Rooms
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <div className='container'>
-                                <RoomList rooms={hotelDetail.rooms} />
+                                <RoomList
+                                    hotelId={hotelDetail.hotelId}
+                                    rooms={hotelDetail.rooms}
+                                />
                             </div>
                         </Modal.Body>
                     </Modal>
@@ -165,7 +166,7 @@ const HotelDetailPage = () => {
                     </div>
                 </div>
                 <div className="recommend-section bg-section-hotel-detail" style={{ padding: "20px 0 20px 0" }}>
-                    <h3 className="text-center" style={{fontWeight:"700"}}>Other Hotels You Might Like</h3>
+                    <h3 className="text-center" style={{ fontWeight: "700" }}>Other Hotels You Might Like</h3>
                     <RecomenedHotelList hotelDetail={hotelDetail} />
                     <div className='d-flex justify-content-center'>
                         <div className='btn btn-hotels' style={{ marginTop: "20px", paddingLeft: "20px", paddingRight: "20px" }}>
