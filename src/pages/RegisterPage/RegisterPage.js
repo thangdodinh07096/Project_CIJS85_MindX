@@ -23,7 +23,7 @@ const RegisterPage = () => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-  }, []);
+  }, [setLoading]);
   return (
     <>
       {loading === true ? (

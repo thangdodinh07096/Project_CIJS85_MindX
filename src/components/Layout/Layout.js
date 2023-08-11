@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { NavLink, Link, Outlet } from "react-router-dom";
 import MyApp from "../../contexts/MyApp";
 import "./Layout.css";
 import { AiOutlineClose } from "react-icons/ai";
@@ -186,11 +186,6 @@ const Layout = () => {
                   <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
                     <NavLink to="/contact" className="nav-link">
                       CONTACT
-                    </NavLink>
-                  </li>
-                  <li className="nav-item d-block d-lg-flex justify-content-center align-items-center">
-                    <NavLink to="/hotelBooking" className="nav-link">
-                      HOTEL BOOKING
                     </NavLink>
                   </li>
                 </ul>

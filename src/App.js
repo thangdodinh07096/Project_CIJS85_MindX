@@ -11,7 +11,9 @@ import HotelDetailPage from "./pages/HotelDetail/HotelDetailPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import ScrollToTop from "./components/ReactHook/ScrollToTop";
 import HotelBookingPage from "./pages/HotelBookingPage/HotelBookingPage";
+import RoomContext from "./contexts/RoomContext";
 
 function App() {
   const [usersData, setUsersData] = useState([]);
@@ -171,6 +173,7 @@ function App() {
     },
     validationSchema: registerFormValidationScheme,
   });
+
   return (
     <MyApp.Provider
       value={{
@@ -188,6 +191,7 @@ function App() {
       }}
     >
       <div className="App">
+        <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
@@ -196,7 +200,7 @@ function App() {
             <Route path="/cart" element={<Home />} />
             <Route path="/contact" element={<ContactsPage />} />
             <Route path="/cart" element={<Home />} />
-            <Route path="/hotelBooking" element={<HotelBookingPage />} />
+            <Route path="/hotelBooking/:hotelId/:roomId" element={<HotelBookingPage />} />
           </Route>
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />

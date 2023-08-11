@@ -21,7 +21,7 @@ const LoginPage = () => {
     setTimeout(() => {
       setLoading(false);
     }, 2000);
-  }, []);
+  }, [setLoading]);
 
   const { handleSubmit, values, handleChange, errors } = formikLogin;
   return (

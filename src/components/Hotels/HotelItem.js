@@ -1,6 +1,5 @@
-// import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-const HotelItem = ({ index, hotelName, img, price, rating, city, district, street, buildingNumber, mainUtiLities }) => {
+const HotelItem = ({ id, hotelName, img, price, rating, city, district, street, buildingNumber, mainUtiLities }) => {
 
     return (
         <div className="card mb-3 list-room-item">
@@ -11,30 +10,43 @@ const HotelItem = ({ index, hotelName, img, price, rating, city, district, stree
                 <div className="col-md-7">
                     <div className="card-body m-1">
                         <div className="card-title item-header">
-                            <Link to={`/hotels/${index}`}>
+                            <Link to={`/hotels/${id}`}>
                                 <h2 className="hotel-name">{hotelName}</h2>
                             </Link>
                             <span className="rating">{rating}</span>
                         </div>
-                        <h5 className='address'><i class="fas fa-map-marker-alt"></i> {buildingNumber}, {street}, {district}, {city}</h5>
-                        <div className='row pt-3'>
-                            <div>Service</div>
-                            <div className='col-lg-8 col-md-10 col-sm-12 row'>
-                                {mainUtiLities.map((mainUtiLitiesItem) => {
-                                    return (
-                                        <div class="room-options col-6"> {mainUtiLitiesItem.title}</div>
-                                    );
-                                })}
+                        <h5 className='address' style={{ fontWeight: "550" }}>
+                            <i class="fas fa-map-marker-alt" style={{ color: "#4d67ce" }}></i> {buildingNumber}, {street}, {district}, {city}
+                        </h5>
+                        <div className='row'>
+                            <h5 style={{ fontWeight: "650", paddingTop: "10px" }}>Hotel Services</h5>
+                            <div className='col-xl-8 col-lg-11 col-md-12 col-sm-10 row'>
+                                {
+                                    mainUtiLities.map((mainUtiLitiesItem) => {
+                                        return (
+                                            <div class="room-options col-6">
+                                                <div className='row'>
+                                                    <img src={mainUtiLitiesItem.mainUtiLitiesImg} className="col-4" alt="..." />
+                                                    <div className="col-8" style={{ fontWeight: "550", fontSize: "15px", lineHeight: "30px" }}>
+                                                        {mainUtiLitiesItem.title}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        );
+                                    })
+                                }
                             </div>
+                            <hr />
                             <div className="text-end">
-                                <h5>Price: <span className="room-price">{price} $</span></h5>
+                                <h3 className="room-price" style={{ fontWeight: "550" }}>US$ {price}</h3>
                             </div>
                         </div>
 
                     </div>
                 </div>
             </div >
-        </div >)
+        </div >
+    )
 }
 
 export default HotelItem

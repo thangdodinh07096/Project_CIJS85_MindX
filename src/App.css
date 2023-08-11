@@ -18,6 +18,9 @@
   height: 85px;
 }
 
+.taj {
+  text-align: justify;
+}
 @media (max-width:991px) {
   .navbar {
     height: auto;
@@ -50,6 +53,16 @@
 .btn-web {
   background-color: #c19b76 !important;
   color: white !important;
+}
+
+
+.btn-hotels {
+  --bs-btn-color: var(--bs-white) !important;
+  --bs-btn-bg: #c19b76 !important;
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: rgb(100, 100, 100);
+  font-weight: 500;
+  font-size: 18px;
 }
 
 @media (max-width: 767px) {
@@ -374,22 +387,4 @@
   background-color: #c19b76;
   color: #fff;
   border-radius: 15%;
-}
-
-@keyframes topDown {
-  0% {
-    left: 0px;
-    bottom: 100px;
-  }
-
-  100% {
-    left: 0px;
-    top: 0px;
-  }
-}
-
-#section-booking h1 {
-  position: relative;
-  animation-name: topDown;
-  animation-duration: 7s;
 }
